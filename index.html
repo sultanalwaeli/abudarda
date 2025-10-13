@@ -13,10 +13,6 @@
             --light: #f8f9fa;
             --dark: #343a40;
             --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-            --dynamic-color-1: #1a4d8f;
-            --dynamic-color-2: #e8b923;
-            --dynamic-color-3: #2e7d32;
-            --dynamic-color-4: #9c27b0;
         }
         
         * {
@@ -30,7 +26,6 @@
             background-color: #f5f7fa;
             color: var(--dark);
             line-height: 1.6;
-            transition: background-color 0.5s ease;
         }
         
         .container {
@@ -49,7 +44,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.5s ease;
         }
         
         .header-content {
@@ -142,7 +136,6 @@
             color: white;
             padding: 5rem 0;
             text-align: center;
-            transition: all 0.5s ease;
         }
         
         .hero h2 {
@@ -187,7 +180,7 @@
         }
         
         .btn-dynamic {
-            background: linear-gradient(45deg, var(--dynamic-color-1), var(--dynamic-color-3));
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             color: white;
             animation: pulse 2s infinite;
         }
@@ -201,7 +194,6 @@
         /* Sections */
         section {
             padding: 4rem 0;
-            transition: all 0.5s ease;
         }
         
         .section-title {
@@ -215,7 +207,6 @@
             color: var(--primary);
             display: inline-block;
             padding-bottom: 10px;
-            transition: all 0.5s ease;
         }
         
         .section-title h2::after {
@@ -227,7 +218,6 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            transition: all 0.5s ease;
         }
         
         /* Missions Section */
@@ -239,7 +229,6 @@
             margin-top: -50px;
             position: relative;
             z-index: 10;
-            transition: all 0.5s ease;
         }
         
         .mission-grid {
@@ -260,7 +249,7 @@
         .mission-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-top-color: var(--dynamic-color-3);
+            border-top-color: var(--accent);
         }
         
         .mission-card i {
@@ -271,7 +260,7 @@
         }
         
         .mission-card:hover i {
-            color: var(--dynamic-color-3);
+            color: var(--accent);
             transform: scale(1.1);
         }
         
@@ -283,7 +272,7 @@
         }
         
         .mission-card:hover h3 {
-            color: var(--dynamic-color-3);
+            color: var(--accent);
         }
         
         /* Gallery Section */
@@ -340,7 +329,7 @@
         
         /* Registration Section */
         .registration {
-            background: linear-gradient(135deg, var(--dynamic-color-1), var(--dynamic-color-3));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             text-align: center;
             padding: 5rem 0;
@@ -348,7 +337,6 @@
             margin: 3rem auto;
             max-width: 90%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease;
         }
         
         .registration-content {
@@ -372,7 +360,6 @@
             background: var(--gradient);
             color: white;
             text-align: center;
-            transition: all 0.5s ease;
         }
         
         .contact-info {
@@ -400,7 +387,6 @@
             color: white;
             padding: 2rem 0;
             text-align: center;
-            transition: all 0.5s ease;
         }
         
         .footer-content {
@@ -509,38 +495,41 @@
             flex: 1;
         }
         
-        /* Color Picker */
-        .color-picker {
+        /* Success Message */
+        .success-message {
+            display: none;
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: white;
-            padding: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--accent);
+            color: white;
+            padding: 20px 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
         }
         
-        .color-options {
-            display: flex;
-            gap: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
         
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-        
-        .color-option.active {
-            border-color: #333;
+        /* Loading State */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
         }
         
         /* Responsive */
@@ -585,17 +574,6 @@
             
             .footer-content {
                 flex-direction: column;
-            }
-            
-            .color-picker {
-                bottom: 10px;
-                left: 10px;
-                padding: 5px;
-            }
-            
-            .color-option {
-                width: 25px;
-                height: 25px;
             }
         }
     </style>
@@ -775,7 +753,15 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="academicYear">العام الدراسي</label>
-                        <input type="text" id="academicYear" class="form-control" required>
+                        <select id="academicYear" class="form-control" required>
+                            <option value="">اختر العام الدراسي</option>
+                            <option value="2024/2025">2024/2025</option>
+                            <option value="2025/2026">2025/2026</option>
+                            <option value="2026/2027">2026/2027</option>
+                            <option value="2027/2028">2027/2028</option>
+                            <option value="2028/2029">2028/2029</option>
+                            <option value="2029/2030">2029/2030</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="schoolName">اسم المدرسة</label>
@@ -792,14 +778,14 @@
                     <label for="innovationField">مجال الابتكار</label>
                     <select id="innovationField" class="form-control" required>
                         <option value="">اختر مجال الابتكار</option>
-                        <option value="التكنولوجيا">التكنولوجيا</option>
-                        <option value="العلوم">العلوم</option>
-                        <option value="البيئة">البيئة</option>
-                        <option value="التربية">التربية</option>
-                        <option value="الصحة">الصحة</option>
-                        <option value="الهندسة">الهندسة</option>
-                        <option value="الزراعة">الزراعة</option>
-                        <option value="الفنون">الفنون</option>
+                        <option value="تقنية المعلومات">تقنية المعلومات</option>
+                        <option value="العلوم والبيئة">العلوم والبيئة</option>
+                        <option value="الهندسة والطاقة">الهندسة والطاقة</option>
+                        <option value="الرياضيات">الرياضيات</option>
+                        <option value="الطب والعلوم الصحية">الطب والعلوم الصحية</option>
+                        <option value="الزراعة والغذاء">الزراعة والغذاء</option>
+                        <option value="الفنون والتصميم">الفنون والتصميم</option>
+                        <option value="العلوم الاجتماعية">العلوم الاجتماعية</option>
                         <option value="أخرى">أخرى</option>
                     </select>
                 </div>
@@ -832,14 +818,18 @@
         </div>
     </div>
 
-    <!-- Color Picker -->
-    <div class="color-picker">
-        <div class="color-options">
-            <div class="color-option active" style="background: linear-gradient(135deg, #1a4d8f, #2e7d32);" data-colors='{"primary":"#1a4d8f","secondary":"#e8b923","accent":"#2e7d32","dynamic1":"#1a4d8f","dynamic2":"#e8b923","dynamic3":"#2e7d32","dynamic4":"#9c27b0"}'></div>
-            <div class="color-option" style="background: linear-gradient(135deg, #9c27b0, #2196f3);" data-colors='{"primary":"#9c27b0","secondary":"#ff9800","accent":"#2196f3","dynamic1":"#9c27b0","dynamic2":"#ff9800","dynamic3":"#2196f3","dynamic4":"#4caf50"}'></div>
-            <div class="color-option" style="background: linear-gradient(135deg, #f44336, #ff9800);" data-colors='{"primary":"#f44336","secondary":"#4caf50","accent":"#ff9800","dynamic1":"#f44336","dynamic2":"#4caf50","dynamic3":"#ff9800","dynamic4":"#9c27b0"}'></div>
-            <div class="color-option" style="background: linear-gradient(135deg, #4caf50, #2196f3);" data-colors='{"primary":"#4caf50","secondary":"#ffc107","accent":"#2196f3","dynamic1":"#4caf50","dynamic2":"#ffc107","dynamic3":"#2196f3","dynamic4":"#9c27b0"}'></div>
-        </div>
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+        <h3>تم التسجيل بنجاح!</h3>
+        <p>شكراً لمشاركتك في سجل الابتكارات المدرسية</p>
+        <button id="closeSuccess" class="btn" style="margin-top: 1rem;">موافق</button>
+    </div>
+
+    <!-- Loading Message -->
+    <div id="loadingMessage" class="loading">
+        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+        <p>جاري حفظ البيانات...</p>
     </div>
 
     <script>
@@ -849,6 +839,12 @@
             const openBtn = document.getElementById('openRegistration');
             const closeBtn = document.querySelector('.close-modal');
             const form = document.getElementById('innovationForm');
+            const successMessage = document.getElementById('successMessage');
+            const closeSuccessBtn = document.getElementById('closeSuccess');
+            const loadingMessage = document.getElementById('loadingMessage');
+            
+            // رابط Google Apps Script الخاص بك
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxE-Pd7TzSWOA6lDwAm_02Obgw9rcSgjeOh4I0FxgLPXTZZakLzMqjCx-VwYDB9O0XbfQ/exec';
             
             // فتح النموذج
             openBtn.addEventListener('click', function() {
@@ -867,6 +863,11 @@
                 }
             });
             
+            // إغلاق رسالة النجاح
+            closeSuccessBtn.addEventListener('click', function() {
+                successMessage.style.display = 'none';
+            });
+            
             // معالجة إرسال النموذج
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -880,48 +881,69 @@
                     innovationDescription: document.getElementById('innovationDescription').value,
                     studentNames: document.getElementById('studentNames').value,
                     phoneNumber: document.getElementById('phoneNumber').value,
-                    email: document.getElementById('email').value
+                    email: document.getElementById('email').value,
+                    timestamp: new Date().toLocaleString('ar-OM')
                 };
                 
-                // هنا يمكنك إضافة الكود لإرسال البيانات إلى Google Sheets
-                // باستخدام Google Apps Script أو خدمة وسيطة
-                
-                // عرض رسالة نجاح
-                alert('تم تسجيل الابتكار بنجاح! شكراً لمشاركتك.');
-                
-                // إعادة تعيين النموذج
-                form.reset();
-                
-                // إغلاق النموذج
-                modal.style.display = 'none';
+                // إرسال البيانات إلى Google Sheets
+                submitToGoogleSheets(formData);
             });
             
-            // تغيير الألوان الديناميكية
-            const colorOptions = document.querySelectorAll('.color-option');
-            colorOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    // إزالة النشاط من جميع الخيارات
-                    colorOptions.forEach(opt => opt.classList.remove('active'));
+            // دالة لإرسال البيانات إلى Google Sheets
+            function submitToGoogleSheets(data) {
+                // عرض رسالة التحميل
+                loadingMessage.style.display = 'block';
+                
+                // إنشاء FormData لإرسال البيانات
+                const formData = new FormData();
+                formData.append('العام الدراسي', data.academicYear);
+                formData.append('المدرسة', data.schoolName);
+                formData.append('اسم الابتكار', data.innovationName);
+                formData.append('مجال الابتكار', data.innovationField);
+                formData.append('وصف الابتكار', data.innovationDescription);
+                formData.append('اسماء الطلبة', data.studentNames);
+                formData.append('رقم الهاتف', data.phoneNumber);
+                formData.append('البريد الإلكتروني', data.email);
+                formData.append('وقت التسجيل', data.timestamp);
+                
+                // إرسال البيانات إلى Google Apps Script
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .then(data => {
+                    // إخفاء رسالة التحميل
+                    loadingMessage.style.display = 'none';
                     
-                    // إضافة النشاط للخيار المحدد
-                    this.classList.add('active');
+                    // عرض رسالة النجاح
+                    showSuccessMessage();
                     
-                    // الحصول على الألوان الجديدة
-                    const colors = JSON.parse(this.getAttribute('data-colors'));
+                    // إعادة تعيين النموذج
+                    form.reset();
                     
-                    // تحديث CSS المتغيرات
-                    document.documentElement.style.setProperty('--primary', colors.primary);
-                    document.documentElement.style.setProperty('--secondary', colors.secondary);
-                    document.documentElement.style.setProperty('--accent', colors.accent);
-                    document.documentElement.style.setProperty('--dynamic-color-1', colors.dynamic1);
-                    document.documentElement.style.setProperty('--dynamic-color-2', colors.dynamic2);
-                    document.documentElement.style.setProperty('--dynamic-color-3', colors.dynamic3);
-                    document.documentElement.style.setProperty('--dynamic-color-4', colors.dynamic4);
+                    // إغلاق النموذج
+                    modal.style.display = 'none';
+                })
+                .catch(error => {
+                    // إخفاء رسالة التحميل
+                    loadingMessage.style.display = 'none';
                     
-                    // تحديث التدرج اللوني
-                    document.documentElement.style.setProperty('--gradient', `linear-gradient(135deg, ${colors.primary}, ${colors.accent})`);
+                    console.error('Error:', error);
+                    alert('حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى أو الاتصال بنا.');
                 });
-            });
+            }
+            
+            // عرض رسالة النجاح
+            function showSuccessMessage() {
+                successMessage.style.display = 'block';
+            }
         });
     </script>
 </body>
