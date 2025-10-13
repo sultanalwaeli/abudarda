@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لجنة التعليم والابتكار - غرفة تجارة وصناعة عُمان فرع عبري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a4d8f;
+            --secondary: #e8b923;
+            --accent: #2e7d32;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+            --dynamic-color-1: #1a4d8f;
+            --dynamic-color-2: #e8b923;
+            --dynamic-color-3: #2e7d32;
+            --dynamic-color-4: #9c27b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            transition: background-color 0.5s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-left: 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary), var(--accent), var(--secondary));
+            border-radius: 50%;
+            z-index: -1;
+            animation: glowing 3s linear infinite;
+        }
+        
+        @keyframes glowing {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        .logo img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 50%;
+        }
+        
+        .header-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .header-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 77, 143, 0.8), rgba(46, 125, 50, 0.8)), url('https://j.top4top.io/p_3573lroff6.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-dynamic {
+            background: linear-gradient(45deg, var(--dynamic-color-1), var(--dynamic-color-3));
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            transition: all 0.5s ease;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+            transition: all 0.5s ease;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.5s ease;
+        }
+        
+        /* Missions Section */
+        .missions {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mission-card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--dynamic-color-3);
+        }
+        
+        .mission-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-card:hover i {
+            color: var(--dynamic-color-3);
+            transform: scale(1.1);
+        }
+        
+        .mission-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .mission-card:hover h3 {
+            color: var(--dynamic-color-3);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 20px 15px 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Registration Section */
+        .registration {
+            background: linear-gradient(135deg, var(--dynamic-color-1), var(--dynamic-color-3));
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin: 3rem auto;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .registration-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .registration h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .registration p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 77, 143, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Color Picker */
+        .color-picker {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            border-color: #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .missions {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .color-picker {
+                bottom: 10px;
+                left: 10px;
+                padding: 5px;
+            }
+            
+            .color-option {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="https://i.top4top.io/p_357336se31.jpeg" alt="شعار اللجنة">
+                    </div>
+                    <div class="header-text">
+                        <h1>لجنة التعليم والابتكار</h1>
+                        <p>غرفة تجارة وصناعة عُمان - فرع عبري</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">عن اللجنة</a></li>
+                        <li><a href="#missions">مهامنا</a></li>
+                        <li><a href="#gallery">معرض الصور</a></li>
+                        <li><a href="#registration">تسجيل الابتكار</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>نحو تعليم مبتكر لمستقبل مزدهر</h2>
+            <p>نعمل على تطوير قطاع التعليم والتدريب في سلطنة عُمان من خلال دراسة المشروعات واللوائح التعليمية وإيجاد حلول للتحديات التي تواجه القطاع</p>
+            <a href="#registration" class="btn btn-dynamic">سجل ابتكارك الآن</a>
+        </div>
+    </section>
+
+    <!-- Missions Section -->
+    <section id="missions" class="missions">
+        <div class="container">
+            <div class="section-title">
+                <h2>مهام اللجنة</h2>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>دراسة المشروعات واللوائح</h3>
+                    <p>دراسة مشروعات اللوائح والأنظمة والاستراتيجيات التعليمية بالسلطنة التي لها تأثير على قطاع التعليم والمحالة من قبل مجلس إدارة الغرفة.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>إيجاد حلول للتحديات</h3>
+                    <p>استعراض المشاكل التي تواجه قطاع التعليم الخاص والتدريب والعمل على إيجاد الحلول المناسبة لها بالتنسيق مع الجهات الحكومية المختصة.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>تمثيل الغرفة</h3>
+                    <p>تمثيل الغرفة في الاجتماعات والمؤتمرات والمعارض التي تدعى اليها في مجال التعليم والتدريب.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-users"></i>
+                    <h3>الإشراف على الفعاليات</h3>
+                    <p>الإشراف على المؤتمرات والندوات التي تعقد في السلطنة في مجال التعليم والتي تنظمها الغرفة بالتنسيق مع الجهات المختصة.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>عقد اجتماعات تشاورية</h3>
+                    <p>عقد اجتماعات تشاورية مع الجهات المختصة متى ما ارتأت اللجنة الضرورة لذلك.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>رفع المقترحات والتوصيات</h3>
+                    <p>ترفع اللجنة مقترحاتها وتوصياتها إلى المكتب التنفيذي لإصدار القرارات اللازمة بشأنها.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض الصور</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="registration">
+        <div class="container">
+            <div class="registration-content">
+                <h2>سجل ابتكارك المدرسي</h2>
+                <p>شاركنا ابتكارك ليتم عرضه في معارضنا وفعالياتنا وليكون جزءاً من سجل الابتكارات المدرسية في سلطنة عمان</p>
+                <button id="openRegistration" class="btn btn-dynamic">ابدأ التسجيل الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>اتصل بنا</h2>
+            </div>
+            <p>نرحب بآرائكم ومقترحاتكم حول تطوير قطاع التعليم والابتكار في سلطنة عمان</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>غرفة تجارة وصناعة عمان - فرع عبري</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+968 XXXXXXXX</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>education-innovation@omanchamber.om</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>© 2025 لجنة التعليم والابتكار - غرفة تجارة وصناعة عمان فرع عبري. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تسجيل ابتكار مدرسي جديد</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="innovationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="academicYear">العام الدراسي</label>
+                        <input type="text" id="academicYear" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolName">اسم المدرسة</label>
+                        <input type="text" id="schoolName" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationName">اسم الابتكار</label>
+                    <input type="text" id="innovationName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationField">مجال الابتكار</label>
+                    <select id="innovationField" class="form-control" required>
+                        <option value="">اختر مجال الابتكار</option>
+                        <option value="التكنولوجيا">التكنولوجيا</option>
+                        <option value="العلوم">العلوم</option>
+                        <option value="البيئة">البيئة</option>
+                        <option value="التربية">التربية</option>
+                        <option value="الصحة">الصحة</option>
+                        <option value="الهندسة">الهندسة</option>
+                        <option value="الزراعة">الزراعة</option>
+                        <option value="الفنون">الفنون</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationDescription">وصف الابتكار (وصف مختصر)</label>
+                    <textarea id="innovationDescription" class="form-control" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentNames">أسماء الطلبة (مفصولة بفاصلة)</label>
+                    <input type="text" id="studentNames" class="form-control" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">رقم الهاتف</label>
+                        <input type="tel" id="phoneNumber" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">تسجيل الابتكار</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Color Picker -->
+    <div class="color-picker">
+        <div class="color-options">
+            <div class="color-option active" style="background: linear-gradient(135deg, #1a4d8f, #2e7d32);" data-colors='{"primary":"#1a4d8f","secondary":"#e8b923","accent":"#2e7d32","dynamic1":"#1a4d8f","dynamic2":"#e8b923","dynamic3":"#2e7d32","dynamic4":"#9c27b0"}'></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #9c27b0, #2196f3);" data-colors='{"primary":"#9c27b0","secondary":"#ff9800","accent":"#2196f3","dynamic1":"#9c27b0","dynamic2":"#ff9800","dynamic3":"#2196f3","dynamic4":"#4caf50"}'></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #f44336, #ff9800);" data-colors='{"primary":"#f44336","secondary":"#4caf50","accent":"#ff9800","dynamic1":"#f44336","dynamic2":"#4caf50","dynamic3":"#ff9800","dynamic4":"#9c27b0"}'></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #4caf50, #2196f3);" data-colors='{"primary":"#4caf50","secondary":"#ffc107","accent":"#2196f3","dynamic1":"#4caf50","dynamic2":"#ffc107","dynamic3":"#2196f3","dynamic4":"#9c27b0"}'></div>
+        </div>
+    </div>
+
+    <script>
+        // إدارة النماذج والواجهة
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('registrationModal');
+            const openBtn = document.getElementById('openRegistration');
+            const closeBtn = document.querySelector('.close-modal');
+            const form = document.getElementById('innovationForm');
+            
+            // فتح النموذج
+            openBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+            });
+            
+            // إغلاق النموذج
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // إغلاق النموذج عند النقر خارج المحتوى
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // معالجة إرسال النموذج
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // جمع البيانات من النموذج
+                const formData = {
+                    academicYear: document.getElementById('academicYear').value,
+                    schoolName: document.getElementById('schoolName').value,
+                    innovationName: document.getElementById('innovationName').value,
+                    innovationField: document.getElementById('innovationField').value,
+                    innovationDescription: document.getElementById('innovationDescription').value,
+                    studentNames: document.getElementById('studentNames').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('email').value
+                };
+                
+                // هنا يمكنك إضافة الكود لإرسال البيانات إلى Google Sheets
+                // باستخدام Google Apps Script أو خدمة وسيطة
+                
+                // عرض رسالة نجاح
+                alert('تم تسجيل الابتكار بنجاح! شكراً لمشاركتك.');
+                
+                // إعادة تعيين النموذج
+                form.reset();
+                
+                // إغلاق النموذج
+                modal.style.display = 'none';
+            });
+            
+            // تغيير الألوان الديناميكية
+            const colorOptions = document.querySelectorAll('.color-option');
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الخيارات
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // إضافة النشاط للخيار المحدد
+                    this.classList.add('active');
+                    
+                    // الحصول على الألوان الجديدة
+                    const colors = JSON.parse(this.getAttribute('data-colors'));
+                    
+                    // تحديث CSS المتغيرات
+                    document.documentElement.style.setProperty('--primary', colors.primary);
+                    document.documentElement.style.setProperty('--secondary', colors.secondary);
+                    document.documentElement.style.setProperty('--accent', colors.accent);
+                    document.documentElement.style.setProperty('--dynamic-color-1', colors.dynamic1);
+                    document.documentElement.style.setProperty('--dynamic-color-2', colors.dynamic2);
+                    document.documentElement.style.setProperty('--dynamic-color-3', colors.dynamic3);
+                    document.documentElement.style.setProperty('--dynamic-color-4', colors.dynamic4);
+                    
+                    // تحديث التدرج اللوني
+                    document.documentElement.style.setProperty('--gradient', `linear-gradient(135deg, ${colors.primary}, ${colors.accent})`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
