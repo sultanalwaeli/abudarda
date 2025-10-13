@@ -532,6 +532,23 @@
             text-align: center;
         }
         
+        /* Error Message */
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f44336;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .header-content {
@@ -796,7 +813,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="studentNames">أسماء الطلبة (مفصولة بفاصلة)</label>
+                    <label for="studentNames">أسماء الطلبة  </label>
                     <input type="text" id="studentNames" class="form-control" required>
                 </div>
                 
@@ -832,6 +849,14 @@
         <p>جاري حفظ البيانات...</p>
     </div>
 
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message">
+        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+        <h3>حدث خطأ!</h3>
+        <p id="errorText">تعذر حفظ البيانات. يرجى المحاولة مرة أخرى.</p>
+        <button id="closeError" class="btn" style="margin-top: 1rem; background: white; color: #f44336;">موافق</button>
+    </div>
+
     <script>
         // إدارة النماذج والواجهة
         document.addEventListener('DOMContentLoaded', function() {
@@ -842,9 +867,12 @@
             const successMessage = document.getElementById('successMessage');
             const closeSuccessBtn = document.getElementById('closeSuccess');
             const loadingMessage = document.getElementById('loadingMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const closeErrorBtn = document.getElementById('closeError');
             
             // رابط Google Apps Script الخاص بك
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxE-Pd7TzSWOA6lDwAm_02Obgw9rcSgjeOh4I0FxgLPXTZZakLzMqjCx-VwYDB9O0XbfQ/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzIP6pNqbmcVnQetRJq2h0sV46g0mgc_8rxn2FHhChYUurWCLcqQIov76rJ1X1zxwr9AQ/exec';
             
             // فتح النموذج
             openBtn.addEventListener('click', function() {
@@ -866,6 +894,11 @@
             // إغلاق رسالة النجاح
             closeSuccessBtn.addEventListener('click', function() {
                 successMessage.style.display = 'none';
+            });
+            
+            // إغلاق رسالة الخطأ
+            closeErrorBtn.addEventListener('click', function() {
+                errorMessage.style.display = 'none';
             });
             
             // معالجة إرسال النموذج
@@ -894,49 +927,59 @@
                 // عرض رسالة التحميل
                 loadingMessage.style.display = 'block';
                 
-                // إنشاء FormData لإرسال البيانات
-                const formData = new FormData();
-                formData.append('العام الدراسي', data.academicYear);
-                formData.append('المدرسة', data.schoolName);
-                formData.append('اسم الابتكار', data.innovationName);
-                formData.append('مجال الابتكار', data.innovationField);
-                formData.append('وصف الابتكار', data.innovationDescription);
-                formData.append('اسماء الطلبة', data.studentNames);
-                formData.append('رقم الهاتف', data.phoneNumber);
-                formData.append('البريد الإلكتروني', data.email);
-                formData.append('وقت التسجيل', data.timestamp);
+                // إنشاء كائن البيانات لإرساله
+                const payload = {
+                    'العام الدراسي': data.academicYear,
+                    'المدرسة': data.schoolName,
+                    'اسم الابتكار': data.innovationName,
+                    'مجال الابتكار': data.innovationField,
+                    'وصف الابتكار': data.innovationDescription,
+                    'اسماء الطلبة': data.studentNames,
+                    'رقم الهاتف': data.phoneNumber,
+                    'البريد الإلكتروني': data.email,
+                    'وقت التسجيل': data.timestamp
+                };
                 
                 // إرسال البيانات إلى Google Apps Script
                 fetch(scriptURL, {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(payload).toString()
                 })
                 .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
+                    if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
+                    return response.json();
                 })
-                .then(data => {
+                .then(result => {
                     // إخفاء رسالة التحميل
                     loadingMessage.style.display = 'none';
                     
-                    // عرض رسالة النجاح
-                    showSuccessMessage();
-                    
-                    // إعادة تعيين النموذج
-                    form.reset();
-                    
-                    // إغلاق النموذج
-                    modal.style.display = 'none';
+                    if (result.result === 'success') {
+                        // عرض رسالة النجاح
+                        showSuccessMessage();
+                        
+                        // إعادة تعيين النموذج
+                        form.reset();
+                        
+                        // إغلاق النموذج
+                        modal.style.display = 'none';
+                    } else {
+                        throw new Error(result.message || 'Unknown error');
+                    }
                 })
                 .catch(error => {
                     // إخفاء رسالة التحميل
                     loadingMessage.style.display = 'none';
                     
                     console.error('Error:', error);
-                    alert('حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى أو الاتصال بنا.');
+                    
+                    // عرض رسالة الخطأ
+                    errorText.textContent = 'تعذر حفظ البيانات. يرجى المحاولة مرة أخرى أو الاتصال بنا.';
+                    errorMessage.style.display = 'block';
                 });
             }
             
