@@ -14,6 +14,7 @@
             --dark: #343a40;
             --gold: #d4af37;
             --gold-light: #f7e98e;
+            --whatsapp: #25D366;
             --gradient: linear-gradient(135deg, var(--primary), var(--accent));
             --gold-gradient: linear-gradient(135deg, var(--gold), var(--gold-light));
             --premium-gradient: linear-gradient(135deg, #0f2c5e, #1a4d8f, #2e7d32);
@@ -362,6 +363,11 @@
             animation: pulse 2s infinite, glow 3s infinite alternate;
         }
         
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+        }
+        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -695,6 +701,32 @@
             font-size: 1.5rem;
             color: var(--secondary);
             flex-shrink: 0;
+        }
+        
+        .contact-item.whatsapp i {
+            color: var(--whatsapp);
+        }
+        
+        .whatsapp-btn {
+            background: var(--whatsapp);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: #128C7E;
         }
         
         /* Footer - متجاوب */
@@ -1240,7 +1272,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="logo-container">
-                    <div class="logo">
+                    <div class="https://g.top4top.io/p_35742kkux1.jpeg">
                         <!-- يمكنك استخدام صورة افتراضية إذا لم تكن الصورة متوفرة -->
                         <div style="width: 100%; height: 100%; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.7rem; text-align: center; padding: 5px;">
                             شعار اللجنة
@@ -1402,11 +1434,21 @@
                     <i class="fas fa-phone"></i>
                     <span>+968 25689674</span>
                 </div>
+                <div class="contact-item whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+968 91253835</span>
+                </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <span>ibri@chamberoman.com</span>
                 </div>
             </div>
+            
+            <!-- زر الواتساب -->
+            <a href="https://wa.me/96891253835" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                تواصل معنا عبر واتساب
+            </a>
         </div>
     </section>
 
@@ -1422,6 +1464,7 @@
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/96891253835" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -1456,7 +1499,7 @@
                             <option value="اعدادية">التعليم الأساسي حلقة ثانية</option>
                             <option value="ثانوية">التعليم مابعد الأساسي</option>
                             <option value="جامعية">الجامعية</option>
-                            <option value="دراسات عليا">الدراسات العليا</option>
+                            <option value="دراسات عليa">الدراسات العليا</option>
                         </select>
                     </div>
                 </div>
