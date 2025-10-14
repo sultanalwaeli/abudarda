@@ -432,7 +432,7 @@
             padding: 2rem;
             border-radius: 10px;
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -781,14 +781,26 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="schoolName">اسم المدرسة</label>
-                        <input type="text" id="schoolName" class="form-control" required>
+                        <label for="educationLevel">المرحلة الدراسية</label>
+                        <select id="educationLevel" class="form-control" required>
+                            <option value="">اختر المرحلة الدراسية</option>
+                            <option value="الابتدائية">الابتدائية</option>
+                            <option value="الإعدادية">الإعدادية</option>
+                            <option value="الثانوية">الثانوية</option>
+                            <option value="الجامعية">الجامعية</option>
+                            <option value="الدراسات العليا">الدراسات العليا</option>
+                        </select>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="innovationName">اسم الابتكار</label>
-                    <input type="text" id="innovationName" class="form-control" required>
+                    <label for="schoolName">اسم المدرسة / الجامعة / الكلية</label>
+                    <input type="text" id="schoolName" class="form-control" placeholder="أدخل اسم المؤسسة التعليمية" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationName">اسم الابتكار / المشروع / الفكرة</label>
+                    <input type="text" id="innovationName" class="form-control" placeholder="أدخل اسم الابتكار أو المشروع أو الفكرة" required>
                 </div>
                 
                 <div class="form-group">
@@ -809,12 +821,12 @@
                 
                 <div class="form-group">
                     <label for="innovationDescription">وصف الابتكار (وصف مختصر)</label>
-                    <textarea id="innovationDescription" class="form-control" rows="4" required></textarea>
+                    <textarea id="innovationDescription" class="form-control" rows="4" placeholder="اكتب وصفاً مختصراً عن الابتكار أو المشروع" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="studentNames">أسماء الطلبة  </label>
-                    <input type="text" id="studentNames" class="form-control" required>
+                    <label for="studentNames">اسم صاحب المشروع / الابتكار</label>
+                    <input type="text" id="studentNames" class="form-control" placeholder="أدخل اسم صاحب المشروع أو الابتكار" required>
                 </div>
                 
                 <div class="form-row">
@@ -872,7 +884,7 @@
             const closeErrorBtn = document.getElementById('closeError');
             
             // رابط Google Apps Script الخاص بك
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzIP6pNqbmcVnQetRJq2h0sV46g0mgc_8rxn2FHhChYUurWCLcqQIov76rJ1X1zxwr9AQ/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxE-Pd7TzSWOA6lDwAm_02Obgw9rcSgjeOh4I0FxgLPXTZZakLzMqjCx-VwYDB9O0XbfQ/exec';
             
             // فتح النموذج
             openBtn.addEventListener('click', function() {
@@ -908,6 +920,7 @@
                 // جمع البيانات من النموذج
                 const formData = {
                     academicYear: document.getElementById('academicYear').value,
+                    educationLevel: document.getElementById('educationLevel').value,
                     schoolName: document.getElementById('schoolName').value,
                     innovationName: document.getElementById('innovationName').value,
                     innovationField: document.getElementById('innovationField').value,
@@ -930,6 +943,7 @@
                 // إنشاء كائن البيانات لإرساله
                 const payload = {
                     'العام الدراسي': data.academicYear,
+                    'المرحلة الدراسية': data.educationLevel,
                     'المدرسة': data.schoolName,
                     'اسم الابتكار': data.innovationName,
                     'مجال الابتكار': data.innovationField,
