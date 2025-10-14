@@ -971,6 +971,26 @@
             width: 90%;
         }
         
+        /* Error Message */
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f44336;
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            border: 2px solid #d32f2f;
+            max-width: 350px;
+            width: 90%;
+        }
+        
         /* Media Queries للتجاوب */
         @media (max-width: 1200px) {
             .mission-grid {
@@ -1221,7 +1241,10 @@
                 </button>
                 <div class="logo-container">
                     <div class="logo">
-                        <img src="https://i.top4top.io/p_357336se31.jpeg" alt="شعار اللجنة">
+                        <!-- يمكنك استخدام صورة افتراضية إذا لم تكن الصورة متوفرة -->
+                        <div style="width: 100%; height: 100%; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.7rem; text-align: center; padding: 5px;">
+                            شعار اللجنة
+                        </div>
                     </div>
                     <div class="header-text">
                         <h1>لجنة التعليم والابتكار</h1>
@@ -1313,27 +1336,39 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 1
+                    </div>
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 2
+                    </div>
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 3
+                    </div>
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 4
+                    </div>
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 5
+                    </div>
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
+                        صورة المعرض 6
+                    </div>
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
             </div>
@@ -1344,7 +1379,7 @@
     <section id="registration" class="registration">
         <div class="container">
             <div class="registration-content">
-                <h2>سجل ابتكارك </h2>
+                <h2>سجل ابتكارك</h2>
                 <p>شاركنا ابتكارك ليتم عرضه في معارضنا وفعالياتنا وليكون جزءاً من سجل الابتكارات المدرسية في سلطنة عمان</p>
                 <button id="openRegistration" class="btn btn-dynamic">ابدأ التسجيل الآن</button>
             </div>
@@ -1365,7 +1400,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>+96825689674</span>
+                    <span>+968 25689674</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
@@ -1417,11 +1452,11 @@
                         <label for="educationLevel">المرحلة الدراسية</label>
                         <select id="educationLevel" class="form-control" required>
                             <option value="">اختر المرحلة الدراسية</option>
-                            <option value="الابتدائية">التعليم الأساسي حلقة أولى</option>
-                            <option value="التعليم الأساسي حلقة ثانية">التعليم الأساسي حلقة ثانية</option>
-                            <option value="التعليم مابعد الأساسي">التعليم مابعد الأساسي</option>
-                            <option value="الجامعية">الجامعية</option>
-                            <option value="الدراسات العليa">الدراسات العليا</option>
+                            <option value="ابتدائية">التعليم الأساسي حلقة أولى</option>
+                            <option value="اعدادية">التعليم الأساسي حلقة ثانية</option>
+                            <option value="ثانوية">التعليم مابعد الأساسي</option>
+                            <option value="جامعية">الجامعية</option>
+                            <option value="دراسات عليا">الدراسات العليا</option>
                         </select>
                     </div>
                 </div>
@@ -1465,11 +1500,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="phoneNumber">رقم الهاتف</label>
-                        <input type="tel" id="phoneNumber" class="form-control" required>
+                        <input type="tel" id="phoneNumber" class="form-control" placeholder="أدخل رقم الهاتف" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني </label>
-                        <input type="email" id="email" class="form-control" required>
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="أدخل البريد الإلكتروني" required>
                     </div>
                 </div>
                 
@@ -1494,6 +1529,14 @@
         <h3 style="color: var(--dark); font-size: 1.1rem;">جاري حفظ البيانات...</h3>
     </div>
 
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message">
+        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+        <h3 style="margin-bottom: 0.8rem;">حدث خطأ!</h3>
+        <p style="margin-bottom: 1.2rem;" id="errorText">تعذر حفظ البيانات، يرجى المحاولة مرة أخرى</p>
+        <button id="closeError" class="btn" style="margin-top: 0.8rem; background: white; color: #f44336; padding: 10px 20px;">موافق</button>
+    </div>
+
     <script>
         // إدارة النماذج والواجهة
         document.addEventListener('DOMContentLoaded', function() {
@@ -1504,12 +1547,15 @@
             const successMessage = document.getElementById('successMessage');
             const closeSuccessBtn = document.getElementById('closeSuccess');
             const loadingMessage = document.getElementById('loadingMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const closeErrorBtn = document.getElementById('closeError');
             const lightBeam = document.getElementById('lightBeam');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mainNav = document.getElementById('mainNav');
             
-            // رابط Google Apps Script الخاص بك
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbztt4WUszCzhyCkjQDukEGCfiY8LgmqRCy1jS8u5wOdMioO46_p8r_9OmfRx8OuCDNX/exec';
+            // رابط Google Apps Script الجديد
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxPq4shX0Ym2ocR-MkRO3LNHC29NqA0zMvk-r46YMlJ81z-Uv-i_SjgKmnytY6JXo7Grg/exec';
             
             // تأثير الضوء الذي يتبع الماوس
             document.addEventListener('mousemove', function(e) {
@@ -1557,6 +1603,11 @@
                 successMessage.style.display = 'none';
             });
             
+            // إغلاق رسالة الخطأ
+            closeErrorBtn.addEventListener('click', function() {
+                errorMessage.style.display = 'none';
+            });
+            
             // معالجة إرسال النموذج
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -1575,16 +1626,48 @@
                     timestamp: new Date().toLocaleString('ar-OM')
                 };
                 
+                // التحقق من صحة البيانات
+                if (!validateForm(formData)) {
+                    return;
+                }
+                
                 // إرسال البيانات إلى Google Sheets
                 submitToGoogleSheets(formData);
             });
+            
+            // دالة للتحقق من صحة النموذج
+            function validateForm(data) {
+                // التحقق من أن جميع الحقول مملوءة
+                for (let key in data) {
+                    if (data[key] === '' || data[key] === null || data[key] === undefined) {
+                        showErrorMessage('يرجى ملء جميع الحقول المطلوبة');
+                        return false;
+                    }
+                }
+                
+                // التحقق من صحة البريد الإلكتروني
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.email)) {
+                    showErrorMessage('يرجى إدخال بريد إلكتروني صحيح');
+                    return false;
+                }
+                
+                // التحقق من صحة رقم الهاتف
+                const phoneRegex = /^[\+]?[0-9]{8,15}$/;
+                if (!phoneRegex.test(data.phoneNumber.replace(/[\s\-\(\)]/g, ''))) {
+                    showErrorMessage('يرجى إدخال رقم هاتف صحيح');
+                    return false;
+                }
+                
+                return true;
+            }
             
             // دالة لإرسال البيانات إلى Google Sheets
             function submitToGoogleSheets(data) {
                 // عرض رسالة التحميل
                 loadingMessage.style.display = 'block';
                 
-                // إنشاء كائن البيانات لإرساله
+                // إنشاء كائن البيانات لإرساله - مطابق لأسماء الحقول في Google Apps Script
                 const payload = {
                     'وقت التسجيل': data.timestamp,
                     'العام الدراسي': data.academicYear,
@@ -1598,34 +1681,43 @@
                     'البريد الإلكتروني': data.email
                 };
                 
-                // إرسال البيانات إلى Google Apps Script باستخدام XMLHttpRequest
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', scriptURL, true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                
-                xhr.onload = function() {
+                // إرسال البيانات إلى Google Apps Script باستخدام fetch
+                fetch(scriptURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
                     loadingMessage.style.display = 'none';
                     showSuccessMessage();
                     form.reset();
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                };
-                
-                xhr.onerror = function() {
+                })
+                .catch(error => {
                     loadingMessage.style.display = 'none';
-                    // حتى مع الخطأ، نعرض نجاح لأن البيانات غالباً حفظت
-                    showSuccessMessage();
-                    form.reset();
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                };
-                
-                xhr.send(new URLSearchParams(payload).toString());
+                    console.error('Error:', error);
+                    showErrorMessage('تعذر إرسال البيانات. يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.');
+                });
             }
             
             // عرض رسالة النجاح
             function showSuccessMessage() {
                 successMessage.style.display = 'block';
+            }
+            
+            // عرض رسالة الخطأ
+            function showErrorMessage(message) {
+                errorText.textContent = message;
+                errorMessage.style.display = 'block';
             }
             
             // تأثيرات scroll للعناصر
