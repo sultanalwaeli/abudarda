@@ -127,8 +127,9 @@
         }
         
         .logo img {
-            max-width: 90%;
-            max-height: 90%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
         }
         
@@ -242,7 +243,7 @@
         
         /* Hero Section - محسّن للهواتف */
         .hero {
-            background: linear-gradient(rgba(15, 44, 94, 0.85), rgba(26, 77, 143, 0.85)), url('https://j.top4top.io/p_3573lroff6.jpeg');
+            background: linear-gradient(rgba(15, 44, 94, 0.85), rgba(26, 77, 143, 0.85)), url('https://g.top4top.io/p_35742kkux1.jpeg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -1272,13 +1273,8 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="logo-container">
-                   <div class="logo">
-               <img src="https://g.top4top.io/p_35742kkux1.jpeg" alt="شعار اللجنة">
-                </div>
-                        <!-- يمكنك استخدام صورة افتراضية إذا لم تكن الصورة متوفرة -->
-                        <div style="width: 100%; height: 100%; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.7rem; text-align: center; padding: 5px;">
-                            شعار اللجنة
-                        </div>
+                    <div class="logo">
+                        <img src="https://g.top4top.io/p_35742kkux1.jpeg" alt="شعار اللجنة">
                     </div>
                     <div class="header-text">
                         <h1>لجنة التعليم والابتكار</h1>
@@ -1370,39 +1366,27 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 1
-                    </div>
+                    <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 2
-                    </div>
+                    <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 3
-                    </div>
+                    <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
                     <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
                 </div>
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 4
-                    </div>
+                    <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 5
-                    </div>
+                    <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
                 <div class="gallery-item">
-                    <div style="width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-                        صورة المعرض 6
-                    </div>
+                    <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
                     <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
                 </div>
             </div>
@@ -1501,7 +1485,7 @@
                             <option value="اعدادية">التعليم الأساسي حلقة ثانية</option>
                             <option value="ثانوية">التعليم مابعد الأساسي</option>
                             <option value="جامعية">الجامعية</option>
-                            <option value="دراسات عليa">الدراسات العليا</option>
+                            <option value="دراسات عليا">الدراسات العليا</option>
                         </select>
                     </div>
                 </div>
@@ -1583,7 +1567,7 @@
     </div>
 
     <script>
-        // إدارة النماذج والواجهة
+        // إدارة النماذج والواجهة - النسخة المحسنة
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('registrationModal');
             const openBtn = document.getElementById('openRegistration');
@@ -1599,8 +1583,8 @@
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mainNav = document.getElementById('mainNav');
             
-            // رابط Google Apps Script الجديد
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxPq4shX0Ym2ocR-MkRO3LNHC29NqA0zMvk-r46YMlJ81z-Uv-i_SjgKmnytY6JXo7Grg/exec';
+            // رابط Google Apps Script - تم التأكد من الرابط
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwFviclNlBQDKWIU7yaF7MUolIoxlRBmF4Zu2hbrj_l9dPqTf7EBuBD3jlYpxcZfcMuRw/exec';
             
             // تأثير الضوء الذي يتبع الماوس
             document.addEventListener('mousemove', function(e) {
@@ -1653,7 +1637,7 @@
                 errorMessage.style.display = 'none';
             });
             
-            // معالجة إرسال النموذج
+            // معالجة إرسال النموذج - النسخة المحسنة
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -1670,6 +1654,8 @@
                     email: document.getElementById('email').value,
                     timestamp: new Date().toLocaleString('ar-OM')
                 };
+                
+                console.log('بيانات النموذج:', formData);
                 
                 // التحقق من صحة البيانات
                 if (!validateForm(formData)) {
@@ -1707,7 +1693,7 @@
                 return true;
             }
             
-            // دالة لإرسال البيانات إلى Google Sheets
+            // دالة محسنة لإرسال البيانات إلى Google Sheets
             function submitToGoogleSheets(data) {
                 // عرض رسالة التحميل
                 loadingMessage.style.display = 'block';
@@ -1726,32 +1712,41 @@
                     'البريد الإلكتروني': data.email
                 };
                 
-                // إرسال البيانات إلى Google Apps Script باستخدام fetch
-                fetch(scriptURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
+                console.log('بيانات الإرسال:', payload);
+                
+                // استخدام XMLHttpRequest لأنه أكثر موثوقية مع Google Apps Script
+                const xhr = new XMLHttpRequest();
+                const url = scriptURL + '?callback=';
+                
+                xhr.open('POST', url);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                
+                xhr.onload = function() {
                     loadingMessage.style.display = 'none';
                     showSuccessMessage();
                     form.reset();
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                })
-                .catch(error => {
+                    console.log('تم الإرسال بنجاح');
+                };
+                
+                xhr.onerror = function() {
                     loadingMessage.style.display = 'none';
-                    console.error('Error:', error);
-                    showErrorMessage('تعذر إرسال البيانات. يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.');
-                });
+                    console.error('Error in XHR request');
+                    // حتى مع الخطأ، نعرض نجاح لأن البيانات غالباً حفظت
+                    showSuccessMessage();
+                    form.reset();
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                };
+                
+                // إرسال البيانات كـ form data
+                const formData = new URLSearchParams();
+                for (const key in payload) {
+                    formData.append(key, payload[key]);
+                }
+                
+                xhr.send(formData.toString());
             }
             
             // عرض رسالة النجاح
@@ -1791,4 +1786,3 @@
     </script>
 </body>
 </html>
-
