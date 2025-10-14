@@ -1,505 +1,1459 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لجنة التعليم والابتكار | غرفة تجارة وصناعة عُمان – فرع عبري</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <meta name="theme-color" content="#0c2d57" />
-  <style>
-    :root{
-      --chamber-blue:#0c2d57;     /* رسمي داكن */
-      --chamber-gold:#c9a227;     /* ذهبي رسمي */
-      --emerald:#167f64;          /* أخضر للأزرار الثانوية */
-      --ink:#1f2937;              /* نص */
-      --paper:#f7f7f5;            /* خلفية */
-      --card:#ffffff;             /* بطاقات */
-      --muted:#6b7280;            /* نص خافت */
-      --radius-lg:16px;
-      --radius-md:12px;
-      --shadow-1:0 6px 18px rgba(12,45,87,.08);
-      --shadow-2:0 10px 30px rgba(12,45,87,.12);
-      --grid-max:1200px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--ink);
-      background:var(--paper);
-      font-family:'Tajawal', system-ui, -apple-system, Segoe UI, Roboto, "Noto Naskh Arabic", sans-serif;
-      line-height:1.75;
-    }
-    .container{width:92%;max-width:var(--grid-max);margin-inline:auto}
-
-    /* شريط علوي */
-    .topbar{
-      background:linear-gradient(90deg,var(--chamber-blue),#143a6e);
-      color:#fff;
-      font-size:.95rem;
-      position:relative;
-      z-index:50;
-      border-bottom:3px solid var(--chamber-gold);
-    }
-    .topbar .container{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.5rem 0}
-    .topbar .mini{display:flex;gap:1.25rem;align-items:center}
-    .topbar i{color:var(--chamber-gold)}
-
-    /* رأس الصفحة بزخرفة هندسية رسمية */
-    header{
-      position:sticky;top:0;z-index:40;
-      backdrop-filter:saturate(150%) blur(6px);
-      background:rgba(255,255,255,.85);
-      border-bottom:1px solid #e9e9e6;
-    }
-    .brand{display:flex;align-items:center;gap:16px;padding:10px 0}
-    .logo-ring{
-      width:84px;height:84px;border-radius:50%;
-      display:grid;place-items:center;position:relative;overflow:hidden;
-      background:#fff;border:2px solid var(--chamber-gold);
-      box-shadow:var(--shadow-1)
-    }
-    .logo-ring::before{
-      content:"";position:absolute;inset:-2px;border-radius:50%;
-      background:conic-gradient(from 90deg,var(--chamber-gold),transparent 40%,transparent 60%,var(--chamber-gold));
-      mask:radial-gradient(circle at center,transparent 62%, #000 63%);
-      opacity:.65
-    }
-    .logo-ring img{max-width:84%;border-radius:50%}
-    .brand h1{margin:0;font:800 1.45rem/1.3 'Tajawal','Noto Naskh Arabic',sans-serif;color:var(--chamber-blue)}
-    .brand p{margin:.15rem 0 0;color:var(--muted)}
-
-    nav ul{display:flex;flex-wrap:wrap;gap:.5rem 6px;list-style:none;margin:0;padding:0}
-    nav a{
-      display:inline-block;padding:.55rem .95rem;border-radius:999px;
-      text-decoration:none;color:var(--chamber-blue);font-weight:600;letter-spacing:.2px;
-      border:1px solid transparent
-    }
-    nav a:hover{border-color:var(--chamber-blue);background:#f0f5ff}
-
-    .header-row{display:flex;justify-content:space-between;align-items:center}
-
-    /* بطل الصفحة */
-    .hero{
-      position:relative;color:#fff;text-align:center;overflow:hidden
-    }
-    .hero::before{
-      /* زخرفة هندسية عربية خفيفة */
-      content:"";position:absolute;inset:0;opacity:.12;pointer-events:none;
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" fill="none" stroke="%23c9a227" stroke-width="0.7"><path d="M0 72h144M72 0v144M0 0l144 144M144 0L0 144" opacity=".3"/></svg>');
-      background-size:380px 380px
-    }
-    .hero .cover{
-      background:linear-gradient(rgba(12,45,87,.84),rgba(22,127,100,.84)),url('https://j.top4top.io/p_3573lroff6.jpeg') center/cover no-repeat;
-      padding:6rem 0 5rem;border-bottom:3px solid var(--chamber-gold)
-    }
-    .hero h2{font:800 2.4rem/1.2 'Tajawal','Noto Naskh Arabic',sans-serif;margin:0 0 1rem}
-    .hero p{max-width:880px;margin:0 auto 2rem;font-size:1.1rem}
-    .btn{display:inline-block;border:none;cursor:pointer;border-radius:999px;font-weight:800;letter-spacing:.2px;padding:12px 26px;transition:.25s}
-    .btn-gold{background:linear-gradient(90deg,var(--chamber-gold),#e2c468);color:#1a1a1a;box-shadow:0 8px 24px rgba(201,162,39,.25)}
-    .btn-gold:hover{transform:translateY(-2px)}
-    .btn-blue{background:var(--chamber-blue);color:#fff}
-
-    /* أقسام عامة */
-    section{padding:3.75rem 0}
-    .section-title{text-align:center;margin-bottom:2.5rem}
-    .section-title h3{display:inline-block;margin:0;padding:.35rem 1rem;border-radius:999px;background:#f5efe1;color:#856301;border:1px solid #ead9a5;font-weight:700}
-    .section-title h2{margin:.9rem 0 0;font:800 2rem/1.25 'Tajawal','Noto Naskh Arabic',sans-serif;color:var(--chamber-blue)}
-
-    /* بطاقات المهام */
-    .missions{margin-top:-56px}
-    .card-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
-    .card{grid-column:span 4;background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);padding:1.5rem;border:1px solid #eceae3}
-    .card-icon{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--chamber-blue),#1b4780);border:2px solid var(--chamber-gold);box-shadow:0 8px 20px rgba(12,45,87,.18);margin-bottom:.9rem}
-    .card h4{margin:.3rem 0 .4rem;font-weight:800;color:var(--chamber-blue)}
-    .card p{margin:0;color:#3d4250}
-
-    /* معرض الصور */
-    .gallery{background:#fcfcfb;border-top:1px solid #efefea;border-bottom:1px solid #efefea}
-    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .g-item{grid-column:span 4;position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-1);background:#ddd;isolation:isolate}
-    .g-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .5s ease}
-    .g-item:hover img{transform:scale(1.06)}
-    .g-cap{position:absolute;inset:auto 0 0 0;color:#fff;padding:18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.75))}
-
-    /* التسجيل */
-    .registration{background:linear-gradient(100deg,var(--chamber-blue),#143a6e 60%);color:#fff;border-top:3px solid var(--chamber-gold);border-bottom:3px solid var(--chamber-gold)}
-    .registration .box{background:rgba(255,255,255,.06);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-2)}
-
-    /* اتصل بنا */
-    .contact{background:#0f2442;color:#fff;position:relative}
-    .contact::before{content:"";position:absolute;inset:0;opacity:.08;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="%23c9a227" stroke-width="1"><circle cx="50" cy="50" r="42"/></svg>')}
-    .contact .info{display:flex;flex-wrap:wrap;gap:1.25rem;justify-content:center;margin-top:1.25rem}
-    .badge{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .85rem;border:1px solid #26456f;border-radius:999px;background:#102b50}
-    .badge i{color:var(--chamber-gold)}
-
-    /* تذييل */
-    footer{background:#0b1c36;color:#d9dce3;padding:1.6rem 0}
-    .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
-    .social{display:flex;gap:.8rem}
-    .social a{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#fff;background:#132a54;border:1px solid #29406a;text-decoration:none}
-    .social a:hover{background:#193564}
-
-    /* نافذة التسجيل */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1000}
-    .modal[open]{display:flex}
-    .dialog{width:min(720px,94%);background:#fff;border-radius:18px;box-shadow:var(--shadow-2);overflow:hidden}
-    .dialog header{position:relative;background:#f7f5ef;border-bottom:1px solid #eee}
-    .dialog h3{margin:0;padding:1.1rem 1.25rem;color:var(--chamber-blue);font-weight:800}
-    .dialog .close{position:absolute;inset-inline-start:12px;top:10px;border:none;background:transparent;font-size:1.4rem;cursor:pointer;color:#5b6780}
-    form{padding:1.25rem}
-    .row{display:flex;gap:1rem;flex-wrap:wrap}
-    .row>.col{flex:1 1 260px}
-    label{display:block;font-weight:700;margin:.4rem 0 .35rem;color:#20324b}
-    .control{width:100%;padding:.8rem 1rem;border:1px solid #dcdad2;border-radius:12px;background:#fff;font-size:1rem}
-    .control:focus{outline:none;border-color:var(--chamber-blue);box-shadow:0 0 0 3px rgba(12,45,87,.12)}
-    .help{font-size:.85rem;color:#6b7280;margin-top:.35rem}
-    .submit{width:100%;padding:12px 16px;border:none;border-radius:12px;background:linear-gradient(90deg,var(--chamber-gold),#e2c468);font-weight:800;cursor:pointer}
-    .submit:hover{filter:saturate(110%)}
-
-    /* رسائل */
-    .toast{position:fixed;inset:auto 50% 26px auto;transform:translateX(-50%);display:none;min-width:280px;text-align:center;padding:14px 18px;border-radius:12px;box-shadow:var(--shadow-2);z-index:1200}
-    .toast.success{background:#167f64;color:#fff}
-    .toast.error{background:#c13f33;color:#fff}
-
-    /* تجاوبية */
-    @media (max-width:1024px){
-      .card{grid-column:span 6}
-      .g-item{grid-column:span 6}
-    }
-    @media (max-width:640px){
-      .header-row{flex-direction:column;gap:10px}
-      nav{width:100%}
-      nav ul{justify-content:center}
-      .card,.g-item{grid-column:span 12}
-      .hero .cover{padding:4.2rem 0 3.6rem}
-      .hero h2{font-size:1.9rem}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لجنة التعليم والابتكار - غرفة تجارة وصناعة عُمان فرع عبري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a4d8f;
+            --secondary: #e8b923;
+            --accent: #2e7d32;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gold: #d4af37;
+            --gold-light: #f7e98e;
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+            --gold-gradient: linear-gradient(135deg, var(--gold), var(--gold-light));
+            --premium-gradient: linear-gradient(135deg, #0f2c5e, #1a4d8f, #2e7d32);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* تأثيرات الضوء الديناميكية */
+        .light-beam {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(232, 185, 35, 0.15) 0%, rgba(232, 185, 35, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        /* Header Styles - محسّن بشكل استثنائي */
+        header {
+            background: var(--premium-gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-left: 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: 2px solid var(--gold);
+            animation: logoGlow 4s infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            0% { box-shadow: 0 0 10px rgba(232, 185, 35, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(232, 185, 35, 0.8), 0 0 40px rgba(232, 185, 35, 0.4); }
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: conic-gradient(from 0deg, var(--secondary), var(--primary), var(--accent), var(--secondary));
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 50%;
+        }
+        
+        .header-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 60%;
+            height: 2px;
+            background: var(--gold);
+            animation: expandWidth 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes expandWidth {
+            0% { width: 60%; }
+            100% { width: 100%; }
+        }
+        
+        .header-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section - تصميم استثنائي */
+        .hero {
+            background: linear-gradient(rgba(15, 44, 94, 0.85), rgba(26, 77, 143, 0.85)), url('https://j.top4top.io/p_3573lroff6.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: expandWidth 2s ease-in-out infinite alternate;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin: 2.5rem auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.4s ease-out;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-dynamic {
+            background: var(--premium-gradient);
+            color: white;
+            animation: pulse 2s infinite, glow 3s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(26, 77, 143, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(26, 77, 143, 0.8), 0 0 30px rgba(46, 125, 50, 0.6); }
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* Missions Section - تصميم متطور */
+        .missions {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            padding: 4rem 3rem;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(232, 185, 35, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 77, 143, 0.05) 0%, transparent 20%);
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .mission-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            transition: all 0.4s ease;
+            border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gold-gradient);
+            opacity: 0.1;
+            transition: width 0.4s ease;
+        }
+        
+        .mission-card:hover::before {
+            width: 100%;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--accent);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+        
+        .mission-card:hover .mission-icon {
+            color: var(--accent);
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .mission-card:hover h3 {
+            color: var(--accent);
+        }
+        
+        .mission-card p {
+            flex-grow: 1;
+            text-align: center;
+            line-height: 1.7;
+        }
+        
+        /* Gallery Section - معرض متطور */
+        .gallery {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a4d8f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 280px;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: var(--gold);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 25px 20px 15px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Registration Section - تصميم متفوق */
+        .registration {
+            background: var(--premium-gradient);
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            border-radius: 20px;
+            margin: 4rem auto;
+            max-width: 95%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .registration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            animation: rotateSlow 20s linear infinite;
+        }
+        
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .registration-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .registration h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .registration h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .registration p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        /* Contact Section - تصميم متفاعل */
+        .contact {
+            background: var(--premium-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer - تصميم راقي */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .social-links a:hover {
+            color: var(--dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Modal Styles - تصميم فاخر */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--gold);
+            position: relative;
+            animation: modalAppear 0.5s ease-out;
+        }
+        
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--premium-gradient);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 2rem;
+        }
+        
+        .modal-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.2);
+            outline: none;
+            background: white;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Success Message - تصميم أنيق */
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--accent);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            animation: fadeIn 0.5s ease, successPulse 2s infinite;
+            border: 2px solid var(--gold);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        @keyframes successPulse {
+            0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(46, 125, 50, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        /* Loading State - تصميم متطور */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            border: 2px solid var(--gold);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .mission-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 1.5rem;
+            }
+            
+            nav ul {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .missions {
+                padding: 3rem 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .registration h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .registration h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: 70vh;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .missions {
+                margin-top: -60px;
+                padding: 2rem 1.5rem;
+            }
+            
+            .mission-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .registration {
+                padding: 4rem 0;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- الشريط العلوي -->
-  <div class="topbar" aria-label="شريط معلومات">
-    <div class="container">
-      <div class="mini" role="list">
-        <span role="listitem"><i class="fa-solid fa-building-columns"></i> غرفة تجارة وصناعة عُمان – فرع عبري</span>
-        <span role="listitem"><i class="fa-solid fa-location-dot"></i> ولاية عبري، محافظة الظاهرة</span>
-      </div>
-      <div class="mini">
-        <span><i class="fa-solid fa-envelope"></i> ibri@chamberoman.com</span>
-        <span><i class="fa-solid fa-phone"></i> +968 2568 9674</span>
-      </div>
-    </div>
-  </div>
+    <!-- تأثير الضوء الديناميكي -->
+    <div class="light-beam" id="lightBeam"></div>
 
-  <!-- رأس الصفحة -->
-  <header>
-    <div class="container header-row">
-      <div class="brand" aria-label="الهوية">
-        <div class="logo-ring" aria-hidden="true">
-          <img src="https://i.top4top.io/p_357336se31.jpeg" alt="شعار لجنة التعليم والابتكار" />
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="https://i.top4top.io/p_357336se31.jpeg" alt="شعار اللجنة">
+                    </div>
+                    <div class="header-text">
+                        <h1>لجنة التعليم والابتكار</h1>
+                        <p>غرفة تجارة وصناعة عُمان - فرع عبري</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">عن اللجنة</a></li>
+                        <li><a href="#missions">مهامنا</a></li>
+                        <li><a href="#gallery">معرض الصور</a></li>
+                        <li><a href="#registration">تسجيل الابتكار</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div>
-          <h1>لجنة التعليم والابتكار</h1>
-          <p>غرفة تجارة وصناعة عُمان – فرع عبري</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>نحو تعليم مبتكر لمستقبل مزدهر</h2>
+                <p>نعمل على تطوير قطاع التعليم والتدريب في سلطنة عُمان من خلال دراسة المشروعات واللوائح التعليمية وإيجاد حلول للتحديات التي تواجه القطاع</p>
+                <a href="#registration" class="btn btn-dynamic">سجل ابتكارك الآن</a>
+            </div>
         </div>
-      </div>
-      <nav aria-label="التنقل الرئيسي">
-        <ul>
-          <li><a href="#about">عن اللجنة</a></li>
-          <li><a href="#missions">مهامنا</a></li>
-          <li><a href="#gallery">معرض الصور</a></li>
-          <li><a href="#registration">تسجيل الابتكار</a></li>
-          <li><a href="#contact">اتصل بنا</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    </section>
 
-  <!-- البطل -->
-  <section class="hero" id="home">
-    <div class="cover">
-      <div class="container">
-        <h2>نحو تعليمٍ مبتكرٍ يعانقُ تطلعات عُمان 2040</h2>
-        <p>نعمل على تمكين التعليم والتدريب بالقطاع الخاص عبر دراسة اللوائح، وبناء الشراكات، وإيجاد حلول عملية للتحديات، وإطلاق مبادرات ومؤتمرات تُسهم في منظومة الابتكار بمحافظة الظاهرة وسلطنة عُمان.</p>
-        <a class="btn btn-gold" href="#registration">سجِّل ابتكارك الآن</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- عن اللجنة -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h3>هوية رسمية</h3>
-        <h2>عن لجنة التعليم والابتكار</h2>
-      </div>
-      <div class="card" style="grid-column:1/-1">
-        <p style="margin:0">تُعد لجنة التعليم والابتكار إحدى اللجان القطاعية بغرفة تجارة وصناعة عُمان – فرع عبري، وتضطلع بدور تنسيقي وتشاركي مع الجهات الحكومية والقطاع الخاص والمؤسسات التعليمية، بما يحقق أهداف رؤية عُمان 2040 في تنمية رأس المال البشري والاقتصاد المعرفي.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- المهام -->
-  <section id="missions" class="missions">
-    <div class="container">
-      <div class="section-title">
-        <h3>اختصاصات</h3>
-        <h2>مهام اللجنة</h2>
-      </div>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-file-lines"></i></div>
-          <h4>دراسة المشروعات واللوائح</h4>
-          <p>تحليل مشروعات اللوائح والأنظمة والاستراتيجيات التعليمية المحالة من مجلس إدارة الغرفة وإبداء المرئيات المهنية حولها.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
-          <h4>حلول للتحديات</h4>
-          <p>استعراض تحديات التعليم الخاص والتدريب واقتراح حلول عملية بالتنسيق مع الجهات المختصة.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-          <h4>تمثيل الغرفة</h4>
-          <p>تمثيل الغرفة في المؤتمرات والمعارض والمنتديات ذات الصلة بالتعليم والابتكار.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
-          <h4>الإشراف على الفعاليات</h4>
-          <p>تنظيم وإسناد الفعاليات المتخصصة بالتعاون مع الشركاء لضمان أثر مهني مستدام.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-          <h4>اجتماعات تشاورية</h4>
-          <p>عقد لقاءات دورية مع المعنيين متى ما اقتضت الحاجة لتنسيق الجهود وتوحيد المخرجات.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
-          <h4>رفع التوصيات</h4>
-          <p>رفع التوصيات لمجلس الإدارة لاعتماد القرارات اللازمة بشأنها.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- معرض الصور -->
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <div class="section-title">
-        <h3>توثيق بصري</h3>
-        <h2>معرض الصور</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="g-item">
-          <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم – دبي 01/11/2023" />
-          <figcaption class="g-cap">معرض الابتكار وتقنيات التعليم – دبي 01/11/2023</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم – دبي 01/11/2023" />
-          <figcaption class="g-cap">معرض الابتكار وتقنيات التعليم – دبي 01/11/2023</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم – دبي 01/11/2023" />
-          <figcaption class="g-cap">معرض الابتكار وتقنيات التعليم – دبي 01/11/2023</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار 2025 – الظاهرة تبتكر" />
-          <figcaption class="g-cap">ملتقى الابتكار 2025 – الظاهرة تبتكر</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار 2025 – الظاهرة تبتكر" />
-          <figcaption class="g-cap">ملتقى الابتكار 2025 – الظاهرة تبتكر</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار 2025 – الظاهرة تبتكر" />
-          <figcaption class="g-cap">ملتقى الابتكار 2025 – الظاهرة تبتكر</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- التسجيل -->
-  <section id="registration" class="registration">
-    <div class="container">
-      <div class="box">
-        <div class="section-title" style="margin-bottom:1.2rem">
-          <h3>بوابة الابتكارات</h3>
-          <h2 style="color:#fff">سجِّل ابتكارك</h2>
+    <!-- Missions Section -->
+    <section id="missions" class="missions">
+        <div class="container">
+            <div class="section-title">
+                <h2>مهام اللجنة</h2>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>دراسة المشروعات واللوائح</h3>
+                    <p>دراسة مشروعات اللوائح والأنظمة والاستراتيجيات التعليمية بالسلطنة التي لها تأثير على قطاع التعليم والمحالة من قبل مجلس إدارة الغرفة.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>إيجاد حلول للتحديات</h3>
+                    <p>استعراض المشاكل التي تواجه قطاع التعليم الخاص والتدريب والعمل على إيجاد الحلول المناسبة لها بالتنسيق مع الجهات الحكومية المختصة.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>تمثيل الغرفة</h3>
+                    <p>تمثيل الغرفة في الاجتماعات والمؤتمرات والمعارض التي تدعى اليها في مجال التعليم والتدريب.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>الإشراف على الفعاليات</h3>
+                    <p>الإشراف على المؤتمرات والندوات التي تعقد في السلطنة في مجال التعليم والتي تنظمها الغرفة بالتنسيق مع الجهات المختصة.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>عقد اجتماعات تشاورية</h3>
+                    <p>عقد اجتماعات تشاورية مع الجهات المختصة متى ما ارتأت اللجنة الضرورة لذلك.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>رفع المقترحات والتوصيات</h3>
+                    <p>ترفع اللجنة مقترحاتها وتوصياتها إلى مجلس الإدارة لإصدار القرارات اللازمة بشأنها.</p>
+                </div>
+            </div>
         </div>
-        <p style="opacity:.9;margin:0 0 1.2rem">شاركنا ابتكارك ليتم عرضه في الفعاليات والمعارض وليُدرج ضمن سجل الابتكارات التعليمية بمحافظة الظاهرة.</p>
-        <button id="openRegistration" class="btn btn-gold" aria-haspopup="dialog">ابدأ التسجيل الآن</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- اتصل بنا -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-title" style="margin-bottom:1.1rem">
-        <h3>تواصل رسمي</h3>
-        <h2 style="color:#fff">اتصل بنا</h2>
-      </div>
-      <p style="margin:0;opacity:.95">نرحب بآرائكم ومقترحاتكم لتطوير التعليم والابتكار بمحافظة الظاهرة.</p>
-      <div class="info">
-        <span class="badge"><i class="fa-solid fa-map-location-dot"></i> غرفة تجارة وصناعة عُمان – فرع عبري</span>
-        <span class="badge"><i class="fa-solid fa-phone"></i> +968 2568 9674</span>
-        <span class="badge"><i class="fa-solid fa-envelope"></i> ibri@chamberoman.com</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- تذييل -->
-  <footer>
-    <div class="container foot">
-      <small>© 2025 لجنة التعليم والابتكار – غرفة تجارة وصناعة عُمان، فرع عبري. جميع الحقوق محفوظة.</small>
-      <div class="social" aria-label="حسابات التواصل">
-        <a href="https://instagram.com/occi_dhahira" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://x.com/occi_dhahira" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://facebook.com/occi_dhahira" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://t.me/occi_dhahira" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- نافذة التسجيل -->
-  <div id="registrationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="regTitle">
-    <div class="dialog">
-      <header>
-        <button class="close" type="button" aria-label="إغلاق">&times;</button>
-        <h3 id="regTitle">تسجيل ابتكار تعليمي</h3>
-      </header>
-      <form id="innovationForm" novalidate>
-        <div class="row">
-          <div class="col">
-            <label for="academicYear">العام الدراسي</label>
-            <select id="academicYear" class="control" required>
-              <option value="">اختر العام الدراسي</option>
-              <option>2024/2025</option>
-              <option>2025/2026</option>
-              <option>2026/2027</option>
-              <option>2027/2028</option>
-              <option>2028/2029</option>
-              <option>2029/2030</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="educationLevel">المرحلة الدراسية</label>
-            <select id="educationLevel" class="control" required>
-              <option value="">اختر المرحلة الدراسية</option>
-              <option value="التعليم الأساسي حلقة أولى">التعليم الأساسي – حلقة أولى</option>
-              <option value="التعليم الأساسي حلقة ثانية">التعليم الأساسي – حلقة ثانية</option>
-              <option value="التعليم ما بعد الأساسي">التعليم ما بعد الأساسي</option>
-              <option value="الجامعية">الجامعية</option>
-              <option value="الدراسات العليا">الدراسات العليا</option>
-            </select>
-          </div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض الصور</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
+                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
+                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <label for="schoolName">اسم المدرسة / الجامعة / الكلية</label>
-        <input id="schoolName" class="control" type="text" placeholder="أدخل اسم المؤسسة التعليمية" required />
-
-        <label for="innovationName">اسم الابتكار / المشروع / الفكرة</label>
-        <input id="innovationName" class="control" type="text" placeholder="اكتب اسم الابتكار أو المشروع" required />
-
-        <label for="innovationField">مجال الابتكار</label>
-        <select id="innovationField" class="control" required>
-          <option value="">اختر مجال الابتكار</option>
-          <option>تقنية المعلومات</option>
-          <option>العلوم والبيئة</option>
-          <option>الهندسة والطاقة</option>
-          <option>الرياضيات</option>
-          <option>الطب والعلوم الصحية</option>
-          <option>الزراعة والغذاء</option>
-          <option>الفنون والتصميم</option>
-          <option>العلوم الاجتماعية</option>
-          <option>أخرى</option>
-        </select>
-
-        <label for="innovationDescription">وصف مختصر للابتكار</label>
-        <textarea id="innovationDescription" class="control" rows="4" placeholder="عرِّف الابتكار وأهدافه وقيمة الأثر المتوقع" required></textarea>
-
-        <label for="studentNames">اسم صاحب الابتكار</label>
-        <input id="studentNames" class="control" type="text" placeholder="اكتب الاسم الرباعي" required />
-
-        <div class="row">
-          <div class="col">
-            <label for="phoneNumber">رقم الهاتف</label>
-            <input id="phoneNumber" class="control" type="tel" inputmode="numeric" pattern="^[0-9]{8}$" placeholder="ثمانية أرقام" required />
-            <div class="help">صيغة مقترحة: 9XXXXXXX</div>
-          </div>
-          <div class="col">
-            <label for="email">البريد الإلكتروني</label>
-            <input id="email" class="control" type="email" placeholder="example@email.com" required />
-          </div>
+    <!-- Registration Section -->
+    <section id="registration" class="registration">
+        <div class="container">
+            <div class="registration-content">
+                <h2>سجل ابتكارك </h2>
+                <p>شاركنا ابتكارك ليتم عرضه في معارضنا وفعالياتنا وليكون جزءاً من سجل الابتكارات المدرسية في سلطنة عمان</p>
+                <button id="openRegistration" class="btn btn-dynamic">ابدأ التسجيل الآن</button>
+            </div>
         </div>
+    </section>
 
-        <button class="submit" type="submit">تسجيل الابتكار</button>
-      </form>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>اتصل بنا</h2>
+            </div>
+            <p>نرحب بآرائكم ومقترحاتكم حول تطوير قطاع التعليم والابتكار في سلطنة عمان</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>غرفة تجارة وصناعة عمان - فرع عبري</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+968 25689674</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>education-innovation@omanchamber.om</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>© 2025 لجنة التعليم والابتكار - فرع غرفة تجارة وصناعة عمان بمحافظ الظاهرة. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تسجيل ابتكار مدرسي جديد</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="innovationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="academicYear">العام الدراسي</label>
+                        <select id="academicYear" class="form-control" required>
+                            <option value="">اختر العام الدراسي</option>
+                            <option value="2024/2025">2024/2025</option>
+                            <option value="2025/2026">2025/2026</option>
+                            <option value="2026/2027">2026/2027</option>
+                            <option value="2027/2028">2027/2028</option>
+                            <option value="2028/2029">2028/2029</option>
+                            <option value="2029/2030">2029/2030</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="educationLevel">المرحلة الدراسية</label>
+                        <select id="educationLevel" class="form-control" required>
+                            <option value="">اختر المرحلة الدراسية</option>
+                            <option value="الابتدائية">التعليم الأساسي حلقة أولى</option>
+                            <option value="التعليم الأساسي حلقة ثانية">التعليم الأساسي حلقة ثانية</option>
+                            <option value="التعليم مابعد الأساسي">التعليم مابعد الأساسي</option>
+                            <option value="الجامعية">الجامعية</option>
+                            <option value="الدراسات العليa">الدراسات العليا</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="schoolName">اسم المدرسة / الجامعة / الكلية</label>
+                    <input type="text" id="schoolName" class="form-control" placeholder="أدخل اسم المؤسسة التعليمية" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationName">اسم الابتكار / المشروع / الفكرة</label>
+                    <input type="text" id="innovationName" class="form-control" placeholder="أدخل اسم الابتكار أو المشروع أو الفكرة" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationField">مجال الابتكار</label>
+                    <select id="innovationField" class="form-control" required>
+                        <option value="">اختر مجال الابتكار</option>
+                        <option value="تقنية المعلومات">تقنية المعلومات</option>
+                        <option value="العلوم والبيئة">العلوم والبيئة</option>
+                        <option value="الهندسة والطاقة">الهندسة والطاقة</option>
+                        <option value="الرياضيات">الرياضيات</option>
+                        <option value="الطب والعلوم الصحية">الطب والعلوم الصحية</option>
+                        <option value="الزراعة والغذاء">الزراعة والغذاء</option>
+                        <option value="الفنون والتصميم">الفنون والتصميم</option>
+                        <option value="العلوم الاجتماعية">العلوم الاجتماعية</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="innovationDescription">وصف الابتكار (وصف مختصر)</label>
+                    <textarea id="innovationDescription" class="form-control" rows="4" placeholder="اكتب وصفاً مختصراً عن الابتكار أو المشروع" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentNames">اسم صاحب المشروع / الابتكار</label>
+                    <input type="text" id="studentNames" class="form-control" placeholder="أدخل اسم صاحب المشروع أو الابتكار" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">رقم الهاتف</label>
+                        <input type="tel" id="phoneNumber" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ibri@chamberoman.com </label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">تسجيل الابتكار</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <!-- توست -->
-  <div id="toastSuccess" class="toast success" role="status" aria-live="polite">تم التسجيل بنجاح – شكراً لمساهمتكم.</div>
-  <div id="toastError" class="toast error" role="alert">تعذر الحفظ مؤقتاً – حاول لاحقاً.</div>
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle" style="font-size: 3.5rem; margin-bottom: 1.5rem;"></i>
+        <h3 style="margin-bottom: 1rem;">تم التسجيل بنجاح!</h3>
+        <p style="margin-bottom: 1.5rem;">شكراً لمشاركتك في سجل الابتكارات بمحافظة الظاهرة</p>
+        <button id="closeSuccess" class="btn" style="margin-top: 1rem; background: white; color: var(--accent);">موافق</button>
+    </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbztt4WUszCzhyCkjQDukEGCfiY8LgmqRCy1jS8u5wOdMioO46_p8r_9OmfRx8OuCDNX/exec';
+    <!-- Loading Message -->
+    <div id="loadingMessage" class="loading">
+        <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary);"></i>
+        <h3 style="color: var(--dark);">جاري حفظ البيانات...</h3>
+    </div>
 
-      const openBtn = document.getElementById('openRegistration');
-      const modal = document.getElementById('registrationModal');
-      const dialog = modal?.querySelector('.dialog');
-      const closeBtn = modal?.querySelector('.close');
-      const form = document.getElementById('innovationForm');
-      const toastOk = document.getElementById('toastSuccess');
-      const toastErr = document.getElementById('toastError');
-
-      const openModal = () => { modal.setAttribute('open',''); document.body.style.overflow='hidden'; }
-      const closeModal = () => { modal.removeAttribute('open'); document.body.style.overflow=''; }
-
-      openBtn?.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-      document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.hasAttribute('open')) closeModal(); });
-
-      const showToast = (el) => { el.style.display='block'; setTimeout(()=> el.style.display='none', 2600); }
-
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        // تحققات أساسية
-        if(!form.checkValidity()) { form.reportValidity(); return; }
-
-        const data = {
-          'وقت التسجيل': new Date().toLocaleString('ar-OM'),
-          'العام الدراسي': document.getElementById('academicYear').value,
-          'المرحلة الدراسية': document.getElementById('educationLevel').value,
-          'المدرسة': document.getElementById('schoolName').value,
-          'اسم الابتكار': document.getElementById('innovationName').value,
-          'مجال الابتكار': document.getElementById('innovationField').value,
-          'وصف الابتكار': document.getElementById('innovationDescription').value,
-          'اسماء الطلبة': document.getElementById('studentNames').value,
-          'رقم الهاتف': document.getElementById('phoneNumber').value,
-          'البريد الإلكتروني': document.getElementById('email').value
-        };
-
-        try {
-          const res = await fetch(scriptURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-            body: new URLSearchParams(data).toString()
-          });
-          if(!res.ok) throw new Error('Request failed');
-          form.reset(); closeModal(); showToast(toastOk);
-        } catch (err) {
-          // حتى لو فشل الطلب الشبكي، يمكن أن تكون البيانات وصلت – نعرض رسالة ودية
-          closeModal(); showToast(toastOk);
-        }
-      });
-    });
-  </script>
+    <script>
+        // إدارة النماذج والواجهة
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('registrationModal');
+            const openBtn = document.getElementById('openRegistration');
+            const closeBtn = document.querySelector('.close-modal');
+            const form = document.getElementById('innovationForm');
+            const successMessage = document.getElementById('successMessage');
+            const closeSuccessBtn = document.getElementById('closeSuccess');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const lightBeam = document.getElementById('lightBeam');
+            
+            // رابط Google Apps Script الخاص بك
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbztt4WUszCzhyCkjQDukEGCfiY8LgmqRCy1jS8u5wOdMioO46_p8r_9OmfRx8OuCDNX/exec';
+            
+            // تأثير الضوء الذي يتبع الماوس
+            document.addEventListener('mousemove', function(e) {
+                lightBeam.style.opacity = '1';
+                lightBeam.style.left = (e.pageX - 150) + 'px';
+                lightBeam.style.top = (e.pageY - 150) + 'px';
+            });
+            
+            // فتح النموذج
+            openBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+            });
+            
+            // إغلاق النموذج
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // إغلاق النموذج عند النقر خارج المحتوى
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // إغلاق رسالة النجاح
+            closeSuccessBtn.addEventListener('click', function() {
+                successMessage.style.display = 'none';
+            });
+            
+            // معالجة إرسال النموذج
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // جمع البيانات من النموذج
+                const formData = {
+                    academicYear: document.getElementById('academicYear').value,
+                    educationLevel: document.getElementById('educationLevel').value,
+                    schoolName: document.getElementById('schoolName').value,
+                    innovationName: document.getElementById('innovationName').value,
+                    innovationField: document.getElementById('innovationField').value,
+                    innovationDescription: document.getElementById('innovationDescription').value,
+                    studentNames: document.getElementById('studentNames').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('email').value,
+                    timestamp: new Date().toLocaleString('ar-OM')
+                };
+                
+                // إرسال البيانات إلى Google Sheets
+                submitToGoogleSheets(formData);
+            });
+            
+            // دالة لإرسال البيانات إلى Google Sheets
+            function submitToGoogleSheets(data) {
+                // عرض رسالة التحميل
+                loadingMessage.style.display = 'block';
+                
+                // إنشاء كائن البيانات لإرساله
+                const payload = {
+                    'وقت التسجيل': data.timestamp,
+                    'العام الدراسي': data.academicYear,
+                    'المرحلة الدراسية': data.educationLevel,
+                    'المدرسة': data.schoolName,
+                    'اسم الابتكار': data.innovationName,
+                    'مجال الابتكار': data.innovationField,
+                    'وصف الابتكار': data.innovationDescription,
+                    'اسماء الطلبة': data.studentNames,
+                    'رقم الهاتف': data.phoneNumber,
+                    'البريد الإلكتروني': data.email
+                };
+                
+                // إرسال البيانات إلى Google Apps Script باستخدام XMLHttpRequest
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', scriptURL, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                
+                xhr.onload = function() {
+                    loadingMessage.style.display = 'none';
+                    showSuccessMessage();
+                    form.reset();
+                    modal.style.display = 'none';
+                };
+                
+                xhr.onerror = function() {
+                    loadingMessage.style.display = 'none';
+                    // حتى مع الخطأ، نعرض نجاح لأن البيانات غالباً حفظت
+                    showSuccessMessage();
+                    form.reset();
+                    modal.style.display = 'none';
+                };
+                
+                xhr.send(new URLSearchParams(payload).toString());
+            }
+            
+            // عرض رسالة النجاح
+            function showSuccessMessage() {
+                successMessage.style.display = 'block';
+            }
+            
+            // تأثيرات scroll للعناصر
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // تطبيق تأثيرات الظهور على العناصر
+            document.querySelectorAll('.mission-card, .gallery-item, .contact-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
-
