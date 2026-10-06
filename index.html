@@ -1,1788 +1,969 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لجنة التعليم والابتكار - غرفة تجارة وصناعة عُمان فرع محافظة الظاهرة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a4d8f;
-            --secondary: #e8b923;
-            --accent: #2e7d32;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gold: #d4af37;
-            --gold-light: #f7e98e;
-            --whatsapp: #25D366;
-            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-            --gold-gradient: linear-gradient(135deg, var(--gold), var(--gold-light));
-            --premium-gradient: linear-gradient(135deg, #0f2c5e, #1a4d8f, #2e7d32);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* تأثيرات الضوء الديناميكية */
-        .light-beam {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(232, 185, 35, 0.15) 0%, rgba(232, 185, 35, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        /* Header Styles - محسّن للتجاوب */
-        header {
-            background: var(--premium-gradient);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--gold);
-            backdrop-filter: blur(10px);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .logo {
-            width: 70px;
-            height: 70px;
-            margin-left: 15px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            border: 2px solid var(--gold);
-            animation: logoGlow 4s infinite alternate;
-            flex-shrink: 0;
-        }
-        
-        @keyframes logoGlow {
-            0% { box-shadow: 0 0 10px rgba(232, 185, 35, 0.5); }
-            100% { box-shadow: 0 0 25px rgba(232, 185, 35, 0.8), 0 0 40px rgba(232, 185, 35, 0.4); }
-        }
-        
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: conic-gradient(from 0deg, var(--secondary), var(--primary), var(--accent), var(--secondary));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-        
-        .header-text {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .header-text h1 {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header-text h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 60%;
-            height: 2px;
-            background: var(--gold);
-            animation: expandWidth 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes expandWidth {
-            0% { width: 60%; }
-            100% { width: 100%; }
-        }
-        
-        .header-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
-        
-        nav ul li {
-            margin: 5px 8px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.9rem;
-            display: block;
-        }
-        
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        nav ul li a:hover::before {
-            left: 100%;
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-        
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        /* قائمة الهواتف المحمولة */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        /* Hero Section - محسّن للهواتف */
-        .hero {
-            background: linear-gradient(rgba(15, 44, 94, 0.85), rgba(26, 77, 143, 0.85)), url('https://g.top4top.io/p_35742kkux1.jpeg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.2;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .hero h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        .hero h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-            animation: expandWidth 2s ease-in-out infinite alternate;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            margin: 2.5rem auto 3rem;
-            line-height: 1.8;
-            animation: fadeInUp 1.2s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--gold-gradient);
-            color: var(--dark);
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1.4s ease-out;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.7s;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .btn-dynamic {
-            background: var(--premium-gradient);
-            color: white;
-            animation: pulse 2s infinite, glow 3s infinite alternate;
-        }
-        
-        .btn-whatsapp {
-            background: var(--whatsapp);
-            color: white;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(26, 77, 143, 0.5); }
-            100% { box-shadow: 0 0 20px rgba(26, 77, 143, 0.8), 0 0 30px rgba(46, 125, 50, 0.6); }
-        }
-        
-        /* Sections */
-        section {
-            padding: 4rem 0;
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            display: inline-block;
-            padding-bottom: 15px;
-            position: relative;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: var(--secondary);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .section-title h2::before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background: var(--gold);
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        /* Missions Section - محسّن للتجاوب */
-        .missions {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            padding: 3rem 2rem;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(232, 185, 35, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(26, 77, 143, 0.05) 0%, transparent 20%);
-        }
-        
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .mission-card {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-            transition: all 0.4s ease;
-            border-top: 4px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: var(--gold-gradient);
-            opacity: 0.1;
-            transition: width 0.4s ease;
-        }
-        
-        .mission-card:hover::before {
-            width: 100%;
-        }
-        
-        .mission-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-top-color: var(--accent);
-        }
-        
-        .mission-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            transition: all 0.4s ease;
-            text-align: center;
-        }
-        
-        .mission-card:hover .mission-icon {
-            color: var(--accent);
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        .mission-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            color: var(--primary);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .mission-card:hover h3 {
-            color: var(--accent);
-        }
-        
-        .mission-card p {
-            flex-grow: 1;
-            text-align: center;
-            line-height: 1.7;
-        }
-        
-        /* Gallery Section - معرض متجاوب */
-        .gallery {
-            background-color: var(--light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gallery::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a4d8f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-            height: 250px;
-            position: relative;
-            border: 2px solid transparent;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border-color: var(--gold);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.15);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 20px 15px 10px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            font-size: 0.9rem;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-        
-        /* Registration Section - متجاوب */
-        .registration {
-            background: var(--premium-gradient);
-            color: white;
-            text-align: center;
-            padding: 5rem 0;
-            border-radius: 20px;
-            margin: 3rem auto;
-            max-width: 95%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .registration::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-            animation: rotateSlow 20s linear infinite;
-        }
-        
-        @keyframes rotateSlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .registration-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            padding: 0 15px;
-        }
-        
-        .registration h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .registration h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-        
-        .registration p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        /* Contact Section - متجاوب */
-        .contact {
-            background: var(--premium-gradient);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.2;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
-        }
-        
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            flex-shrink: 0;
-        }
-        
-        .contact-item.whatsapp i {
-            color: var(--whatsapp);
-        }
-        
-        .whatsapp-btn {
-            background: var(--whatsapp);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: #128C7E;
-        }
-        
-        /* Footer - متجاوب */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2.5rem 0 1.5rem;
-            text-align: center;
-            border-top: 3px solid var(--gold);
-            position: relative;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        
-        .copyright {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .copyright p {
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.4s ease;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: opacity 0.3s;
-            border-radius: 50%;
-        }
-        
-        .social-links a:hover::before {
-            opacity: 1;
-        }
-        
-        .social-links a:hover {
-            color: var(--dark);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .social-links a i {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Modal Styles - متجاوب */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            padding: 15px;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 700px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            border: 2px solid var(--gold);
-            position: relative;
-            animation: modalAppear 0.5s ease-out;
-        }
-        
-        @keyframes modalAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--premium-gradient);
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .modal-header h2 {
-            color: var(--primary);
-            margin: 0;
-            position: relative;
-            padding-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .modal-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #666;
-            transition: all 0.3s ease;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .close-modal:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-            background: rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: #f9f9f9;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.2);
-            outline: none;
-            background: white;
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
-        
-        /* Success Message - متجاوب */
-        .success-message {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--accent);
-            color: white;
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            z-index: 3000;
-            text-align: center;
-            animation: fadeIn 0.5s ease, successPulse 2s infinite;
-            border: 2px solid var(--gold);
-            max-width: 350px;
-            width: 90%;
-        }
-        
-        @keyframes successPulse {
-            0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(46, 125, 50, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -60%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
-        
-        /* Loading State - متجاوب */
-        .loading {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            z-index: 3000;
-            text-align: center;
-            border: 2px solid var(--gold);
-            backdrop-filter: blur(5px);
-            max-width: 300px;
-            width: 90%;
-        }
-        
-        /* Error Message */
-        .error-message {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #f44336;
-            color: white;
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            z-index: 3000;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-            border: 2px solid #d32f2f;
-            max-width: 350px;
-            width: 90%;
-        }
-        
-        /* Media Queries للتجاوب */
-        @media (max-width: 1200px) {
-            .mission-grid {
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo-container {
-                margin-bottom: 1rem;
-                justify-content: center;
-                min-width: auto;
-            }
-            
-            .logo {
-                margin-left: 0;
-                margin-right: 15px;
-            }
-            
-            nav {
-                min-width: auto;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            nav ul {
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .missions {
-                padding: 2.5rem 1.5rem;
-                margin-top: -50px;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            
-            .registration h2 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mission-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-            
-            .gallery-item {
-                height: 220px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-                min-width: 200px;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .registration h2 {
-                font-size: 1.8rem;
-            }
-            
-            .registration p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            /* إظهار زر القائمة في الهواتف */
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                left: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            nav ul li {
-                margin: 5px 0;
-                width: 100%;
-            }
-            
-            nav ul li a {
-                display: block;
-                text-align: center;
-                padding: 12px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 3rem 0;
-                min-height: 60vh;
-            }
-            
-            .hero h2 {
-                font-size: 1.6rem;
-            }
-            
-            .hero p {
-                font-size: 0.95rem;
-                margin: 2rem auto 2.5rem;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-                font-size: 0.9rem;
-            }
-            
-            .missions {
-                margin-top: -40px;
-                padding: 2rem 1rem;
-            }
-            
-            .mission-card {
-                padding: 1.5rem 1rem;
-            }
-            
-            .mission-icon {
-                font-size: 2rem;
-            }
-            
-            .mission-card h3 {
-                font-size: 1.2rem;
-            }
-            
-            .registration {
-                padding: 3rem 0;
-            }
-            
-            .modal-content {
-                padding: 1.5rem;
-            }
-            
-            .container {
-                width: 95%;
-                padding: 0 10px;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-item {
-                height: 250px;
-            }
-            
-            .contact-info {
-                gap: 1rem;
-            }
-            
-            .contact-item {
-                min-width: 100%;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .logo-container {
-                flex-direction: column;
-            }
-            
-            .logo {
-                margin: 0 0 10px 0;
-            }
-            
-            .header-text h1 {
-                font-size: 1.4rem;
-            }
-            
-            .header-text p {
-                font-size: 0.8rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061d32">
+
+<title>مركز أبو الدرداء الرقمي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+ --navy:#071e32;
+ --navy2:#0b3653;
+ --teal:#1ca39a;
+ --teal2:#5bd0c3;
+ --gold:#d7ad5b;
+ --cream:#f8f3e9;
+ --white:#fff;
+ --muted:#9db1be;
+}
+
+*{
+ box-sizing:border-box;
+}
+
+html,body{
+ margin:0;
+ width:100%;
+ min-height:100%;
+ font-family:"Tajawal",Tahoma,sans-serif;
+ background:#061a2c;
+ color:#fff;
+}
+
+body{
+ overflow-x:hidden;
+}
+
+/* الخلفية */
+.bg{
+ position:fixed;
+ inset:0;
+ z-index:-3;
+ background:
+ radial-gradient(circle at 10% 10%,rgba(28,163,154,.22),transparent 30%),
+ radial-gradient(circle at 90% 78%,rgba(215,173,91,.18),transparent 28%),
+ linear-gradient(145deg,#041421 0%,#08283e 50%,#061a2c 100%);
+}
+
+.bg:before,
+.bg:after{
+ content:"";
+ position:absolute;
+ border-radius:50%;
+ border:1px solid rgba(255,255,255,.06);
+ animation:orbit 18s linear infinite;
+}
+
+.bg:before{
+ width:52vw;
+ height:52vw;
+ right:-20vw;
+ top:-25vw;
+}
+
+.bg:after{
+ width:45vw;
+ height:45vw;
+ left:-22vw;
+ bottom:-25vw;
+ animation-direction:reverse;
+}
+
+@keyframes orbit{
+ to{transform:rotate(360deg)}
+}
+
+.noise{
+ position:fixed;
+ inset:0;
+ z-index:-2;
+ opacity:.16;
+ background-image:
+ radial-gradient(rgba(255,255,255,.28) .55px,transparent .55px);
+ background-size:18px 18px;
+ mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+
+/* الحاوية */
+.app{
+ width:min(96vw,1850px);
+ margin:auto;
+ min-height:100vh;
+ padding:18px 0 16px;
+ display:flex;
+ flex-direction:column;
+}
+
+/* الرأس */
+.top{
+ height:104px;
+ display:flex;
+ align-items:center;
+ padding:12px 18px;
+ border:1px solid rgba(255,255,255,.10);
+ border-radius:27px;
+ background:
+ linear-gradient(120deg,rgba(255,255,255,.105),rgba(255,255,255,.045));
+ backdrop-filter:blur(18px);
+ box-shadow:0 18px 60px #0004;
+ position:relative;
+ overflow:hidden;
+}
+
+.top:after{
+ content:"";
+ position:absolute;
+ inset:auto -10% -150% auto;
+ width:420px;
+ height:420px;
+ border-radius:50%;
+ background:
+ radial-gradient(circle,rgba(91,208,195,.15),transparent 65%);
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:14px;
+ flex:1;
+ z-index:1;
+}
+
+.logoWrap{
+ width:76px;
+ height:76px;
+ border-radius:50%;
+ padding:3px;
+ background:linear-gradient(145deg,#fff,var(--gold));
+ box-shadow:0 0 30px rgba(215,173,91,.22);
+}
+
+.logo{
+ width:100%;
+ height:100%;
+ border-radius:50%;
+ object-fit:cover;
+ background:white;
+}
+
+.gov{
+ font-size:12px;
+ color:#b8c9d3;
+ line-height:1.55;
+}
+
+.school{
+ font-size:22px;
+ font-weight:900;
+ margin-top:3px;
+}
+
+/* الساعة */
+.live{
+ display:flex;
+ align-items:center;
+ gap:16px;
+ z-index:1;
+}
+
+.liveDot{
+ display:flex;
+ align-items:center;
+ gap:7px;
+ color:#c4d4dd;
+ font-size:12px;
+}
+
+.dot{
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:#62dfad;
+ box-shadow:0 0 12px #62dfad;
+ animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+ 50%{
+  opacity:.35;
+  transform:scale(.7);
+ }
+}
+
+.clock{
+ text-align:center;
+ min-width:265px;
+ padding:10px 18px;
+ border:1px solid rgba(255,255,255,.13);
+ border-radius:18px;
+ background:rgba(255,255,255,.07);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.time{
+ font-size:36px;
+ font-weight:900;
+ line-height:1;
+ color:#fff;
+ letter-spacing:1px;
+}
+
+.date{
+ font-size:13px;
+ font-weight:700;
+ color:#d4e0e6;
+ margin-top:8px;
+ white-space:nowrap;
+}
+
+/* منطقة العنوان */
+.hero{
+ display:grid;
+ grid-template-columns:1.25fr .75fr;
+ gap:13px;
+ margin:13px 0;
+}
+
+.heroMain,
+.vision{
+ border:1px solid rgba(255,255,255,.09);
+ border-radius:24px;
+ background:rgba(255,255,255,.055);
+ backdrop-filter:blur(12px);
+ min-height:125px;
+}
+
+.heroMain{
+ padding:18px 24px;
+ position:relative;
+ overflow:hidden;
+}
+
+.heroMain:after{
+ content:"أبو الدرداء";
+ position:absolute;
+ left:25px;
+ top:-17px;
+ font-size:95px;
+ font-weight:900;
+ color:rgba(255,255,255,.025);
+ white-space:nowrap;
+}
+
+.kicker{
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:2px;
+ color:var(--teal2);
+}
+
+.hero h1{
+ font-size:32px;
+ margin:5px 0 3px;
+ font-weight:900;
+}
+
+.hero p{
+ margin:0;
+ color:#b4c5ce;
+ font-size:14px;
+}
+
+.vision{
+ padding:16px 22px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ background:
+ linear-gradient(130deg,rgba(215,173,91,.13),rgba(255,255,255,.045));
+}
+
+.vision small{
+ color:var(--gold);
+ font-weight:800;
+}
+
+.vision strong{
+ font-size:18px;
+ line-height:1.7;
+ margin-top:4px;
+}
+
+/* عنوان الخدمات */
+.servicesHead{
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ margin:2px 4px 9px;
+}
+
+.servicesHead h2{
+ font-size:20px;
+ margin:0;
+}
+
+.servicesHead span{
+ font-size:11px;
+ color:#94aab6;
+}
+
+.count{
+ padding:6px 11px;
+ border:1px solid rgba(91,208,195,.22);
+ background:rgba(28,163,154,.09);
+ border-radius:999px;
+ color:#8be0d6!important;
+ font-weight:800;
+}
+
+/* شبكة الخدمات */
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ grid-template-rows:repeat(2,minmax(155px,1fr));
+ gap:12px;
+ flex:1;
+}
+
+.card{
+ position:relative;
+ overflow:hidden;
+ text-align:right;
+ border:1px solid rgba(255,255,255,.09);
+ border-radius:23px;
+ background:
+ linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+ backdrop-filter:blur(14px);
+ padding:17px 18px;
+ color:white;
+ cursor:pointer;
+ font:inherit;
+ transition:.22s cubic-bezier(.2,.8,.2,1);
+ box-shadow:0 13px 30px rgba(0,0,0,.14);
+}
+
+.card:before{
+ content:"";
+ position:absolute;
+ width:150px;
+ height:150px;
+ border-radius:50%;
+ background:radial-gradient(circle,var(--glow),transparent 70%);
+ left:-55px;
+ bottom:-70px;
+ opacity:.5;
+ transition:.25s;
+}
+
+.card:hover,
+.card:focus-visible{
+ transform:translateY(-5px) scale(1.012);
+ border-color:rgba(255,255,255,.2);
+ box-shadow:0 20px 45px rgba(0,0,0,.27);
+ outline:none;
+}
+
+.card:hover:before{
+ transform:scale(1.25);
+ opacity:.8;
+}
+
+/* البطاقات الرئيسية */
+.card.feature{
+ background:
+ linear-gradient(145deg,rgba(17,84,109,.92),rgba(8,48,72,.92));
+ border-color:rgba(91,208,195,.22);
+}
+
+.card.parent{
+ background:
+ linear-gradient(145deg,rgba(94,69,29,.70),rgba(44,42,37,.72));
+ border-color:rgba(215,173,91,.23);
+}
+
+.icon{
+ width:48px;
+ height:48px;
+ border-radius:15px;
+ display:grid;
+ place-items:center;
+ background:rgba(255,255,255,.10);
+ border:1px solid rgba(255,255,255,.10);
+ font-size:21px;
+ color:var(--accent);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.card h3{
+ font-size:17px;
+ margin:12px 0 5px;
+ font-weight:800;
+}
+
+.card p{
+ font-size:11.5px;
+ line-height:1.55;
+ color:#aebfc9;
+ margin:0;
+ max-width:90%;
+}
+
+.feature p,
+.parent p{
+ color:#d0dce1;
+}
+
+.go{
+ position:absolute;
+ left:16px;
+ bottom:15px;
+ width:30px;
+ height:30px;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ background:rgba(255,255,255,.08);
+ color:#c8d6de;
+ font-size:12px;
+}
+
+.card:hover .go{
+ background:var(--accent);
+ color:#082238;
+}
+
+/* التذييل */
+.footer{
+ height:35px;
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ color:#758e9d;
+ font-size:10.5px;
+ padding:0 5px;
+}
+
+.footer b{
+ color:#9eb2bd;
+}
+
+/* نافذة الخدمة */
+.overlay{
+ position:fixed;
+ inset:0;
+ z-index:50;
+ background:#04131f;
+ display:none;
+ flex-direction:column;
+}
+
+.overlay.on{
+ display:flex;
+}
+
+.browser{
+ height:68px;
+ background:linear-gradient(120deg,#08283e,#0b3653);
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:9px 16px;
+ border-bottom:1px solid #ffffff17;
+}
+
+.back,
+.external{
+ border:1px solid #ffffff17;
+ border-radius:13px;
+ padding:10px 15px;
+ font:700 13px "Tajawal";
+ cursor:pointer;
+}
+
+.back{
+ background:#fff;
+ color:#0b3653;
+}
+
+.external{
+ background:#ffffff0d;
+ color:white;
+}
+
+.serviceName{
+ flex:1;
+ font-weight:800;
+}
+
+iframe{
+ width:100%;
+ height:calc(100vh - 68px);
+ border:0;
+ background:white;
+}
+
+.touchHint{
+ display:flex;
+ gap:7px;
+ align-items:center;
+}
+
+.touchHint i{
+ color:var(--teal2);
+}
+
+/* استجابة للشاشات المختلفة */
+@media(max-width:1100px){
+ .grid{
+  grid-template-columns:repeat(2,1fr);
+  grid-template-rows:auto;
+ }
+
+ .hero{
+  grid-template-columns:1fr;
+ }
+
+ .app{
+  min-height:auto;
+ }
+}
+
+@media(max-width:620px){
+
+ .app{
+  width:94vw;
+ }
+
+ .top{
+  height:auto;
+ }
+
+ .logoWrap{
+  width:62px;
+  height:62px;
+ }
+
+ .gov{
+  font-size:9px;
+ }
+
+ .school{
+  font-size:15px;
+ }
+
+ .liveDot{
+  display:none;
+ }
+
+ .clock{
+  min-width:160px;
+  padding:8px;
+ }
+
+ .time{
+  font-size:26px;
+ }
+
+ .date{
+  font-size:9px;
+ }
+
+ .heroMain,
+ .vision{
+  min-height:auto;
+ }
+
+ .hero h1{
+  font-size:26px;
+ }
+
+ .grid{
+  grid-template-columns:1fr;
+ }
+
+ .card{
+  min-height:145px;
+ }
+
+ .footer{
+  display:none;
+ }
+}
+</style>
 </head>
+
 <body>
-    <!-- تأثير الضوء الديناميكي -->
-    <div class="light-beam" id="lightBeam"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="logo-container">
-                    <div class="logo">
-                        <img src="https://g.top4top.io/p_35742kkux1.jpeg" alt="شعار اللجنة">
-                    </div>
-                    <div class="header-text">
-                        <h1>لجنة التعليم والابتكار</h1>
-                        <p>غرفة تجارة وصناعة عُمان - فرع محافظة الظاهرة</p>
-                    </div>
-                </div>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="#about">عن اللجنة</a></li>
-                        <li><a href="#missions">مهامنا</a></li>
-                        <li><a href="#gallery">معرض الصور</a></li>
-                        <li><a href="#registration">تسجيل الابتكار</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+<div class="bg"></div>
+<div class="noise"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>نحو تعليم مبتكر لمستقبل مزدهر</h2>
-                <p>نعمل على تطوير قطاع التعليم والتدريب في سلطنة عُمان من خلال دراسة المشروعات واللوائح التعليمية وإيجاد حلول للتحديات التي تواجه القطاع</p>
-                <a href="#registration" class="btn btn-dynamic">سجل ابتكارك الآن</a>
-            </div>
-        </div>
-    </section>
+<main class="app">
 
-    <!-- Missions Section -->
-    <section id="missions" class="missions">
-        <div class="container">
-            <div class="section-title">
-                <h2>مهام اللجنة</h2>
-            </div>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>دراسة المشروعات واللوائح</h3>
-                    <p>دراسة مشروعات اللوائح والأنظمة والاستراتيجيات التعليمية بالسلطنة التي لها تأثير على قطاع التعليم والمحالة من قبل مجلس إدارة الغرفة.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>إيجاد حلول للتحديات</h3>
-                    <p>استعراض المشاكل التي تواجه قطاع التعليم الخاص والتدريب والعمل على إيجاد الحلول المناسبة لها بالتنسيق مع الجهات الحكومية المختصة.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>تمثيل الغرفة</h3>
-                    <p>تمثيل الغرفة في الاجتماعات والمؤتمرات والمعارض التي تدعى اليها في مجال التعليم والتدريب.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>الإشراف على الفعاليات</h3>
-                    <p>الإشراف على المؤتمرات والندوات التي تعقد في السلطنة في مجال التعليم والتي تنظمها الغرفة بالتنسيق مع الجهات المختصة.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>عقد اجتماعات تشاورية</h3>
-                    <p>عقد اجتماعات تشاورية مع الجهات المختصة متى ما ارتأت اللجنة الضرورة لذلك.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>رفع المقترحات والتوصيات</h3>
-                    <p>ترفع اللجنة مقترحاتها وتوصياتها إلى مجلس الإدارة لإصدار القرارات اللازمة بشأنها.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<header class="top">
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>معرض الصور</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://j.top4top.io/p_3573lroff6.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
-                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://k.top4top.io/p_35735xrkh7.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
-                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://l.top4top.io/p_3573m5gr38.jpeg" alt="معرض الابتكار وتقنيات التعليم بدبي">
-                    <div class="gallery-caption">معرض الابتكار وتقنيات التعليم بدبي ١/١١/٢٠٢٣</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://f.top4top.io/p_3573diho12.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
-                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://g.top4top.io/p_3573ayxsf3.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
-                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://h.top4top.io/p_3573hfy2c4.jpeg" alt="ملتقى الابتكار ٢٠٢٥">
-                    <div class="gallery-caption">ملتقى الابتكار ٢٠٢٥ (الظاهرة تبتكر)</div>
-                </div>
-            </div>
-        </div>
-    </section>
+ <div class="brand">
 
-    <!-- Registration Section -->
-    <section id="registration" class="registration">
-        <div class="container">
-            <div class="registration-content">
-                <h2>سجل ابتكارك</h2>
-                <p>شاركنا ابتكارك ليتم عرضه في معارضنا وفعالياتنا وليكون جزءاً من سجل الابتكارات المدرسية في سلطنة عمان</p>
-                <button id="openRegistration" class="btn btn-dynamic">ابدأ التسجيل الآن</button>
-            </div>
-        </div>
-    </section>
+  <div class="logoWrap">
+   <img
+   class="logo"
+   src="https://c.top4top.io/p_3906f6odb1.jpg"
+   alt="شعار مدرسة أبو الدرداء">
+  </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>اتصل بنا</h2>
-            </div>
-            <p>نرحب بآرائكم ومقترحاتكم حول تطوير قطاع التعليم والابتكار في سلطنة عمان</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>غرفة تجارة وصناعة عمان - فرع محافظة الظاهرة</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+968 25689674</span>
-                </div>
-                <div class="contact-item whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>+968 91253835</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>ibri@chamberoman.com</span>
-                </div>
-            </div>
-            
-            <!-- زر الواتساب -->
-            <a href="https://wa.me/96891253835" class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-                تواصل معنا عبر واتساب
-            </a>
-        </div>
-    </section>
+  <div>
+   <div class="gov">
+    سلطنة عُمان · وزارة التربية والتعليم<br>
+    المديرية العامة للتربية والتعليم بمحافظة الظاهرة
+   </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
-                    <p>© 2025 لجنة التعليم والابتكار - فرع غرفة تجارة وصناعة عمان بمحافظ الظاهرة. جميع الحقوق محفوظة.</p>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/96891253835" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+   <div class="school">
+    مدرسة أبو الدرداء للبنين (5–12)
+   </div>
+  </div>
 
-    <!-- Registration Modal -->
-    <div id="registrationModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>تسجيل ابتكار مدرسي جديد</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <form id="innovationForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="academicYear">العام الدراسي</label>
-                        <select id="academicYear" class="form-control" required>
-                            <option value="">اختر العام الدراسي</option>
-                            <option value="2024/2025">2024/2025</option>
-                            <option value="2025/2026">2025/2026</option>
-                            <option value="2026/2027">2026/2027</option>
-                            <option value="2027/2028">2027/2028</option>
-                            <option value="2028/2029">2028/2029</option>
-                            <option value="2029/2030">2029/2030</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="educationLevel">المرحلة الدراسية</label>
-                        <select id="educationLevel" class="form-control" required>
-                            <option value="">اختر المرحلة الدراسية</option>
-                            <option value="ابتدائية">التعليم الأساسي حلقة أولى</option>
-                            <option value="اعدادية">التعليم الأساسي حلقة ثانية</option>
-                            <option value="ثانوية">التعليم مابعد الأساسي</option>
-                            <option value="جامعية">الجامعية</option>
-                            <option value="دراسات عليا">الدراسات العليا</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="schoolName">اسم المدرسة / الجامعة / الكلية</label>
-                    <input type="text" id="schoolName" class="form-control" placeholder="أدخل اسم المؤسسة التعليمية" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="innovationName">اسم الابتكار / المشروع / الفكرة</label>
-                    <input type="text" id="innovationName" class="form-control" placeholder="أدخل اسم الابتكار أو المشروع أو الفكرة" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="innovationField">مجال الابتكار</label>
-                    <select id="innovationField" class="form-control" required>
-                        <option value="">اختر مجال الابتكار</option>
-                        <option value="تقنية المعلومات">تقنية المعلومات</option>
-                        <option value="العلوم والبيئة">العلوم والبيئة</option>
-                        <option value="الهندسة والطاقة">الهندسة والطاقة</option>
-                        <option value="الرياضيات">الرياضيات</option>
-                        <option value="الطب والعلوم الصحية">الطب والعلوم الصحية</option>
-                        <option value="الزراعة والغذاء">الزراعة والغذاء</option>
-                        <option value="الفنون والتصميم">الفنون والتصميم</option>
-                        <option value="العلوم الاجتماعية">العلوم الاجتماعية</option>
-                        <option value="أخرى">أخرى</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="innovationDescription">وصف الابتكار (وصف مختصر)</label>
-                    <textarea id="innovationDescription" class="form-control" rows="4" placeholder="اكتب وصفاً مختصراً عن الابتكار أو المشروع" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentNames">اسم صاحب المشروع / الابتكار</label>
-                    <input type="text" id="studentNames" class="form-control" placeholder="أدخل اسم صاحب المشروع أو الابتكار" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phoneNumber">رقم الهاتف</label>
-                        <input type="tel" id="phoneNumber" class="form-control" placeholder="أدخل رقم الهاتف" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="form-control" placeholder="أدخل البريد الإلكتروني" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem;">تسجيل الابتكار</button>
-                </div>
-            </form>
-        </div>
-    </div>
+ </div>
 
-    <!-- Success Message -->
-    <div id="successMessage" class="success-message">
-        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-        <h3 style="margin-bottom: 0.8rem;">تم التسجيل بنجاح!</h3>
-        <p style="margin-bottom: 1.2rem;">شكراً لمشاركتك في سجل الابتكارات بمحافظة الظاهرة</p>
-        <button id="closeSuccess" class="btn" style="margin-top: 0.8rem; background: white; color: var(--accent); padding: 10px 20px;">موافق</button>
-    </div>
+ <div class="live">
 
-    <!-- Loading Message -->
-    <div id="loadingMessage" class="loading">
-        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);"></i>
-        <h3 style="color: var(--dark); font-size: 1.1rem;">جاري حفظ البيانات...</h3>
-    </div>
+  <div class="liveDot">
+   <span class="dot"></span>
+   الخدمات الرقمية متاحة
+  </div>
 
-    <!-- Error Message -->
-    <div id="errorMessage" class="error-message">
-        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-        <h3 style="margin-bottom: 0.8rem;">حدث خطأ!</h3>
-        <p style="margin-bottom: 1.2rem;" id="errorText">تعذر حفظ البيانات، يرجى المحاولة مرة أخرى</p>
-        <button id="closeError" class="btn" style="margin-top: 0.8rem; background: white; color: #f44336; padding: 10px 20px;">موافق</button>
-    </div>
+  <div class="clock">
+   <div class="time" id="time">--:--</div>
+   <div class="date" id="date">التاريخ</div>
+  </div>
 
-    <script>
-        // إدارة النماذج والواجهة - النسخة المحسنة
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('registrationModal');
-            const openBtn = document.getElementById('openRegistration');
-            const closeBtn = document.querySelector('.close-modal');
-            const form = document.getElementById('innovationForm');
-            const successMessage = document.getElementById('successMessage');
-            const closeSuccessBtn = document.getElementById('closeSuccess');
-            const loadingMessage = document.getElementById('loadingMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            const errorText = document.getElementById('errorText');
-            const closeErrorBtn = document.getElementById('closeError');
-            const lightBeam = document.getElementById('lightBeam');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            // رابط Google Apps Script - تم التأكد من الرابط
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwFviclNlBQDKWIU7yaF7MUolIoxlRBmF4Zu2hbrj_l9dPqTf7EBuBD3jlYpxcZfcMuRw/exec';
-            
-            // تأثير الضوء الذي يتبع الماوس
-            document.addEventListener('mousemove', function(e) {
-                lightBeam.style.opacity = '1';
-                lightBeam.style.left = (e.pageX - 150) + 'px';
-                lightBeam.style.top = (e.pageY - 150) + 'px';
-            });
-            
-            // تبديل القائمة في الهواتف
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-            });
-            
-            // إغلاق القائمة عند النقر على رابط
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        mainNav.classList.remove('active');
-                    }
-                });
-            });
-            
-            // فتح النموذج
-            openBtn.addEventListener('click', function() {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-            
-            // إغلاق النموذج
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // إغلاق النموذج عند النقر خارج المحتوى
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // إغلاق رسالة النجاح
-            closeSuccessBtn.addEventListener('click', function() {
-                successMessage.style.display = 'none';
-            });
-            
-            // إغلاق رسالة الخطأ
-            closeErrorBtn.addEventListener('click', function() {
-                errorMessage.style.display = 'none';
-            });
-            
-            // معالجة إرسال النموذج - النسخة المحسنة
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // جمع البيانات من النموذج
-                const formData = {
-                    academicYear: document.getElementById('academicYear').value,
-                    educationLevel: document.getElementById('educationLevel').value,
-                    schoolName: document.getElementById('schoolName').value,
-                    innovationName: document.getElementById('innovationName').value,
-                    innovationField: document.getElementById('innovationField').value,
-                    innovationDescription: document.getElementById('innovationDescription').value,
-                    studentNames: document.getElementById('studentNames').value,
-                    phoneNumber: document.getElementById('phoneNumber').value,
-                    email: document.getElementById('email').value,
-                    timestamp: new Date().toLocaleString('ar-OM')
-                };
-                
-                console.log('بيانات النموذج:', formData);
-                
-                // التحقق من صحة البيانات
-                if (!validateForm(formData)) {
-                    return;
-                }
-                
-                // إرسال البيانات إلى Google Sheets
-                submitToGoogleSheets(formData);
-            });
-            
-            // دالة للتحقق من صحة النموذج
-            function validateForm(data) {
-                // التحقق من أن جميع الحقول مملوءة
-                for (let key in data) {
-                    if (data[key] === '' || data[key] === null || data[key] === undefined) {
-                        showErrorMessage('يرجى ملء جميع الحقول المطلوبة');
-                        return false;
-                    }
-                }
-                
-                // التحقق من صحة البريد الإلكتروني
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(data.email)) {
-                    showErrorMessage('يرجى إدخال بريد إلكتروني صحيح');
-                    return false;
-                }
-                
-                // التحقق من صحة رقم الهاتف
-                const phoneRegex = /^[\+]?[0-9]{8,15}$/;
-                if (!phoneRegex.test(data.phoneNumber.replace(/[\s\-\(\)]/g, ''))) {
-                    showErrorMessage('يرجى إدخال رقم هاتف صحيح');
-                    return false;
-                }
-                
-                return true;
-            }
-            
-            // دالة محسنة لإرسال البيانات إلى Google Sheets
-            function submitToGoogleSheets(data) {
-                // عرض رسالة التحميل
-                loadingMessage.style.display = 'block';
-                
-                // إنشاء كائن البيانات لإرساله - مطابق لأسماء الحقول في Google Apps Script
-                const payload = {
-                    'وقت التسجيل': data.timestamp,
-                    'العام الدراسي': data.academicYear,
-                    'المرحلة الدراسية': data.educationLevel,
-                    'المدرسة': data.schoolName,
-                    'اسم الابتكار': data.innovationName,
-                    'مجال الابتكار': data.innovationField,
-                    'وصف الابتكار': data.innovationDescription,
-                    'اسماء الطلبة': data.studentNames,
-                    'رقم الهاتف': data.phoneNumber,
-                    'البريد الإلكتروني': data.email
-                };
-                
-                console.log('بيانات الإرسال:', payload);
-                
-                // استخدام XMLHttpRequest لأنه أكثر موثوقية مع Google Apps Script
-                const xhr = new XMLHttpRequest();
-                const url = scriptURL + '?callback=';
-                
-                xhr.open('POST', url);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                
-                xhr.onload = function() {
-                    loadingMessage.style.display = 'none';
-                    showSuccessMessage();
-                    form.reset();
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    console.log('تم الإرسال بنجاح');
-                };
-                
-                xhr.onerror = function() {
-                    loadingMessage.style.display = 'none';
-                    console.error('Error in XHR request');
-                    // حتى مع الخطأ، نعرض نجاح لأن البيانات غالباً حفظت
-                    showSuccessMessage();
-                    form.reset();
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                };
-                
-                // إرسال البيانات كـ form data
-                const formData = new URLSearchParams();
-                for (const key in payload) {
-                    formData.append(key, payload[key]);
-                }
-                
-                xhr.send(formData.toString());
-            }
-            
-            // عرض رسالة النجاح
-            function showSuccessMessage() {
-                successMessage.style.display = 'block';
-            }
-            
-            // عرض رسالة الخطأ
-            function showErrorMessage(message) {
-                errorText.textContent = message;
-                errorMessage.style.display = 'block';
-            }
-            
-            // تأثيرات scroll للعناصر
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // تطبيق تأثيرات الظهور على العناصر
-            document.querySelectorAll('.mission-card, .gallery-item, .contact-item').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
-    </script>
+ </div>
+
+</header>
+
+
+<section class="hero">
+
+ <div class="heroMain">
+
+  <div class="kicker">
+   ABU DARDA DIGITAL HUB
+  </div>
+
+  <h1>
+   مركز أبو الدرداء الرقمي
+  </h1>
+
+  <p>
+   كل خدمات المدرسة الرقمية… في مساحة واحدة ذكية وسريعة.
+  </p>
+
+ </div>
+
+
+ <div class="vision">
+
+  <small>
+   رؤيتنا
+  </small>
+
+  <strong>
+   جيلٌ مجيدٌ علميًا، متمكنٌ رقميًا، مبتكرٌ ومنافسٌ للمستقبل
+  </strong>
+
+ </div>
+
+</section>
+
+
+<div class="servicesHead">
+
+ <div>
+
+  <h2>
+   خدماتنا الرقمية
+  </h2>
+
+  <span class="touchHint">
+   <i class="fa-solid fa-hand-pointer"></i>
+   المس البطاقة للوصول إلى الخدمة
+  </span>
+
+ </div>
+
+ <span class="count">
+  8 خدمات متاحة
+ </span>
+
+</div>
+
+
+<section class="grid" id="grid"></section>
+
+
+<footer class="footer">
+
+ <b>
+  بوابة أبو الدرداء الرقمية · عملا – ولاية عبري
+ </b>
+
+ <span>
+  التقنية في خدمة التعلّم وصناعة الأثر
+ </span>
+
+</footer>
+
+</main>
+
+
+<div class="overlay" id="overlay">
+
+ <div class="browser">
+
+  <button class="back" onclick="closeService()">
+   <i class="fa-solid fa-arrow-right"></i>
+   &nbsp; الرئيسية
+  </button>
+
+  <div class="serviceName" id="serviceName"></div>
+
+  <button class="external" onclick="openExternal()">
+   فتح في نافذة مستقلة
+   &nbsp;
+   <i class="fa-solid fa-up-right-from-square"></i>
+  </button>
+
+ </div>
+
+ <iframe
+ id="frame"
+ title="الخدمة الرقمية"
+ allow="clipboard-read; clipboard-write">
+ </iframe>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   الخدمات الرقمية
+============================== */
+
+const services=[
+
+ {
+  t:"منصة الرصد والتقويم",
+  d:"رصد أدوات التقويم والدرجات وملاحظات الطلبة",
+  u:"https://sultanalwaeli.github.io/Assessment/",
+  i:"fa-chart-column",
+  a:"#63ddd1",
+  g:"rgba(28,163,154,.55)",
+  c:"feature"
+ },
+
+ {
+  t:"بوابة ولي الأمر",
+  d:"رحلة ابنك التعليمية… بين يديك",
+  u:"https://sultanalwaeli.github.io/portal/",
+  i:"fa-people-roof",
+  a:"#efc46d",
+  g:"rgba(215,173,91,.55)",
+  c:"parent"
+ },
+
+ {
+  t:"سجل الاستئذان الرقمي",
+  d:"تسجيل وإدارة طلبات استئذان الطلبة",
+  u:"https://script.google.com/macros/s/AKfycbxrvMJE6Z517aK2wnwZJkz58j5UKeIcexguLMBD_s4OV71tUDbmGbEPcqpnsx-v6bi8/exec",
+  i:"fa-user-clock",
+  a:"#84b9e5",
+  g:"rgba(80,145,196,.48)"
+ },
+
+ {
+  t:"سجل السلوك الطلابي",
+  d:"متابعة وتسجيل السلوك الطلابي والإجراءات",
+  u:"https://script.google.com/macros/s/AKfycbyc0TUMTXzmu71R_3_WFyDN6t5Wn6YOqPqqfK-2ILiNfLqxtZSQOLzRamZi3KWx4Rz2pA/exec",
+  i:"fa-star",
+  a:"#e4bd84",
+  g:"rgba(196,145,79,.48)"
+ },
+
+ {
+  t:"سجل التأخر الصباحي",
+  d:"تسجيل حالات تأخر الطلبة الصباحية",
+  u:"https://script.google.com/macros/s/AKfycbwQsRYxATGP5XEwrbPaKdl7mzI-p-bz_ZAI9Tw4CZKFrsshmsYoCl1neGFtrjuC7JpB/exec",
+  i:"fa-clock",
+  a:"#d7a9ce",
+  g:"rgba(160,104,148,.48)"
+ },
+
+ {
+  t:"سجل رصد الغياب",
+  d:"رصد غياب الطلبة في الحصة الأولى والحالات الطارئة",
+  u:"https://sultanalwaeli.github.io/absence.d/",
+  i:"fa-user-minus",
+  a:"#9ad0a5",
+  g:"rgba(91,151,105,.48)"
+ },
+
+ {
+  t:"تطبيق مقارنة الغياب",
+  d:"مقارنة غياب الحصة الأولى بالحالات الطارئة",
+  u:"https://script.google.com/macros/s/AKfycbyW6KkuzK9_h6NrjR8WPvr_Purs3GzxnbiP_U35H99MP62dY_PnNTYUjRESG5L5bEVtgw/exec",
+  i:"fa-code-compare",
+  a:"#a9bce9",
+  g:"rgba(91,115,171,.48)"
+ },
+
+ {
+  t:"سجل زوار المدرسة",
+  d:"تسجيل بيانات زوار مدرسة أبو الدرداء",
+  u:"https://script.google.com/macros/s/AKfycbwYjcDj1a0Yguj0tDUg5VqBkAxL7hESWxllWHG7j0jgV8ugndoKr1_RGwJ23xkfu315bw/exec",
+  i:"fa-users",
+  a:"#e8c783",
+  g:"rgba(181,143,65,.48)"
+ }
+
+];
+
+
+/* ==============================
+   إنشاء البطاقات
+============================== */
+
+const grid=document.getElementById("grid");
+
+let current="";
+
+services.forEach(s=>{
+
+ const b=document.createElement("button");
+
+ b.className="card "+(s.c||"");
+
+ b.style.setProperty("--accent",s.a);
+ b.style.setProperty("--glow",s.g);
+
+ b.innerHTML=`
+  <div class="icon">
+   <i class="fa-solid ${s.i}"></i>
+  </div>
+
+  <h3>${s.t}</h3>
+
+  <p>${s.d}</p>
+
+  <span class="go">
+   <i class="fa-solid fa-arrow-left"></i>
+  </span>
+ `;
+
+ b.addEventListener("click",()=>openService(s));
+
+ grid.appendChild(b);
+
+});
+
+
+/* ==============================
+   فتح الخدمات
+============================== */
+
+function openService(s){
+
+ current=s.u;
+
+ document.getElementById("serviceName").textContent=s.t;
+
+ document.getElementById("frame").src=s.u;
+
+ document.getElementById("overlay").classList.add("on");
+
+}
+
+
+/* ==============================
+   العودة للرئيسية
+============================== */
+
+function closeService(){
+
+ document.getElementById("overlay").classList.remove("on");
+
+ document.getElementById("frame").src="about:blank";
+
+ current="";
+
+}
+
+
+/* ==============================
+   فتح في نافذة مستقلة
+============================== */
+
+function openExternal(){
+
+ if(current){
+  window.open(current,"_blank","noopener");
+ }
+
+}
+
+
+/* ==============================
+   الساعة والتاريخ
+============================== */
+
+function updateClock(){
+
+ const now=new Date();
+
+ const timeOptions={
+  hour:"2-digit",
+  minute:"2-digit",
+  second:"2-digit",
+  hour12:true
+ };
+
+ document.getElementById("time").textContent=
+  now.toLocaleTimeString("ar-OM",timeOptions);
+
+ const dateOptions={
+  weekday:"long",
+  day:"numeric",
+  month:"long",
+  year:"numeric"
+ };
+
+ document.getElementById("date").textContent=
+  now.toLocaleDateString("ar-OM",dateOptions);
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+
+/* زر ESC للعودة */
+addEventListener("keydown",e=>{
+
+ if(e.key==="Escape"){
+  closeService();
+ }
+
+});
+
+</script>
+
 </body>
 </html>
