@@ -5,738 +5,274 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071e32">
-
 <title>مركز أبو الدرداء الرقمي | بوابة الريادة</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 :root{
  --bg:#061827;
+ --panel:#10384c;
  --teal:#63d9cc;
  --gold:#e1b96c;
  --text:#f4f9fc;
  --muted:#abc2cf;
 }
-
 *{box-sizing:border-box}
-
 body{
  margin:0;
- min-height:100vh;
- background:#061827;
- color:var(--text);
  font-family:Tajawal,Tahoma,sans-serif;
-}
-
-body:before{
- content:"";
- position:fixed;
- inset:0;
- z-index:-1;
- background:
- radial-gradient(circle at 9% 9%,#1b817c40,transparent 30%),
- radial-gradient(circle at 91% 77%,#d6a95524,transparent 31%),
+ color:var(--text);
+ background:radial-gradient(circle at 10% 10%,#1b817c40,transparent 35%),
  linear-gradient(135deg,#051625,#09283e 55%,#061827);
+ min-height:100vh;
 }
-
 button,input,textarea{font:inherit}
 button{cursor:pointer}
-
-button:focus-visible,
-input:focus-visible{
- outline:2px solid var(--gold);
- outline-offset:2px;
-}
-
-.shell{
- width:min(1450px,95%);
- margin:auto;
- padding:18px 0 28px;
-}
-
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.shell{width:min(1450px,95%);margin:auto;padding:18px 0}
 .glass{
- border:1px solid #ffffff1b;
  background:linear-gradient(130deg,#ffffff12,#ffffff06);
+ border:1px solid #ffffff1b;
  border-radius:23px;
  box-shadow:0 16px 50px #0002;
 }
-
-/* رأس الموقع */
-
 header{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:18px;
- padding:13px 20px;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:18px;padding:13px 20px;
 }
-
-.identity{
- display:flex;
- align-items:center;
- gap:13px;
-}
-
+.identity{display:flex;align-items:center;gap:13px}
 .identity img{
- height:73px;
- width:73px;
- object-fit:cover;
- border:3px solid var(--gold);
- border-radius:50%;
+ width:73px;height:73px;object-fit:cover;
+ border:3px solid var(--gold);border-radius:50%;
  background:white;
 }
-
-.ministry{
- font-size:12px;
- color:#c3d4dd;
- line-height:1.5;
-}
-
-.school{
- font-size:21px;
- font-weight:900;
- margin-top:4px;
-}
-
-.schoolCode{
- color:var(--gold);
- font-size:13px;
- font-weight:900;
- margin-top:5px;
-}
-
-.header-right{
- display:flex;
- align-items:center;
- gap:10px;
-}
-
+.ministry{font-size:12px;color:#c3d4dd;line-height:1.6}
+.school{font-size:21px;font-weight:900;margin-top:4px}
+.code-tag{color:var(--gold);font-weight:900;font-size:13px}
+.header-right{display:flex;align-items:center;gap:10px}
 .clock{
- border:1px solid #ffffff20;
- background:#ffffff0b;
- border-radius:15px;
- padding:10px 16px;
- text-align:center;
- min-width:210px;
+ border:1px solid #ffffff20;background:#ffffff0b;
+ border-radius:15px;padding:10px 16px;text-align:center;
+ min-width:205px;
 }
-
-#time{
- font-size:25px;
- font-weight:900;
- white-space:nowrap;
-}
-
-#date{
- font-size:12px;
- color:#bfd3dc;
- margin-top:3px;
-}
-
+#time{font-size:25px;font-weight:900}
+#date{font-size:12px;color:#bfd3dc;margin-top:3px}
 .icon-btn{
- background:#ffffff12;
- border:1px solid #ffffff23;
- color:white;
- border-radius:13px;
- min-width:44px;
- height:44px;
+ background:#ffffff12;border:1px solid #ffffff23;
+ color:white;border-radius:13px;width:44px;height:44px;
 }
-
-/* عنوان المركز */
-
 .hero{
- display:grid;
- grid-template-columns:1.4fr .8fr;
- gap:14px;
- margin:15px 0;
+ display:grid;grid-template-columns:1.4fr .8fr;
+ gap:14px;margin:15px 0;
 }
-
 .hero-main{
- padding:27px;
- position:relative;
- overflow:hidden;
- background:linear-gradient(120deg,#0d4b5f,#0a2a44);
+ padding:27px;background:linear-gradient(120deg,#0d4b5f,#0a2a44);
 }
-
-.hero-main:after{
- content:"أبو الدرداء";
- position:absolute;
- left:-20px;
- bottom:-40px;
- font-size:100px;
- font-weight:900;
- color:#ffffff07;
- pointer-events:none;
-}
-
-.eyebrow{
- font-size:12px;
- color:#8ae6dc;
- font-weight:900;
- letter-spacing:1.5px;
-}
-
-h1{
- font-size:clamp(27px,3vw,42px);
- margin:10px 0;
-}
-
-.hero-main p{
- color:#d0e0e7;
- line-height:1.7;
- margin:0;
- max-width:650px;
-}
-
+.eyebrow{font-size:12px;color:#8ae6dc;font-weight:900}
+h1{font-size:clamp(27px,3vw,42px);margin:10px 0}
+.hero-main p{color:#d0e0e7;line-height:1.8;margin:0}
 .vision{
- padding:24px;
- background:linear-gradient(120deg,#6e572530,#ffffff08);
- display:flex;
- flex-direction:column;
- justify-content:center;
+ padding:24px;background:linear-gradient(120deg,#6e572530,#ffffff08);
+ display:flex;flex-direction:column;justify-content:center;
 }
-
-.vision small{
- color:var(--gold);
- font-weight:900;
-}
-
-.vision strong{
- font-size:20px;
- line-height:1.65;
- margin-top:7px;
-}
-
-/* المؤشرات المدرسية */
-
+.vision small{color:var(--gold);font-weight:900}
+.vision strong{font-size:20px;line-height:1.65;margin-top:7px}
 .metrics{
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:12px;
- margin-bottom:14px;
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:12px;margin-bottom:14px;
 }
-
-.metric{
- padding:15px 18px;
- display:flex;
- align-items:center;
- gap:12px;
-}
-
-.metric i{
- color:var(--teal);
- font-size:24px;
-}
-
-.metric b{
- display:block;
- font-size:25px;
-}
-
-.metric small{
- color:var(--muted);
-}
-
-/* المستجدات */
-
+.metric{padding:15px;display:flex;align-items:center;gap:12px}
+.metric i{color:var(--teal);font-size:24px}
+.metric b{display:block;font-size:24px}
+.metric small{color:var(--muted)}
 .announcement{
- display:flex;
- align-items:center;
- gap:12px;
- background:#0e3947;
- border:1px solid #70d4c72e;
- border-radius:16px;
- padding:10px 15px;
- margin-bottom:17px;
+ display:flex;align-items:center;gap:12px;
+ background:#0e3947;border:1px solid #70d4c72e;
+ border-radius:16px;padding:10px 15px;margin-bottom:17px;
 }
-
-.announcement strong{
- color:var(--gold);
- white-space:nowrap;
- font-size:13px;
-}
-
-.news{
- overflow:hidden;
- flex:1;
- white-space:nowrap;
-}
-
+.announcement strong{color:var(--gold);white-space:nowrap}
+.news{overflow:hidden;flex:1;white-space:nowrap}
 .news span{
- display:inline-block;
- color:#d8e8ed;
+ display:inline-block;color:#d8e8ed;
  animation:marquee 24s linear infinite;
 }
-
 @keyframes marquee{
  from{transform:translateX(-110%)}
  to{transform:translateX(110%)}
 }
-
-/* عنوان الخدمات */
-
 .section-head{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:12px;
- margin-bottom:12px;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;margin-bottom:12px;
 }
-
-.section-head h2{
- margin:0;
- font-size:23px;
-}
-
+.section-head h2{margin:0;font-size:23px}
 .count{
- font-size:12px;
- color:#95e9df;
- border:1px solid #65d4c744;
- border-radius:100px;
+ font-size:12px;color:#95e9df;
+ border:1px solid #65d4c744;border-radius:100px;
  padding:7px 12px;
 }
-
-/* البحث والتصنيفات */
-
-.tools{
- display:flex;
- align-items:center;
- gap:10px;
- flex-wrap:wrap;
- margin-bottom:15px;
-}
-
-.search{
- flex:1;
- min-width:190px;
- position:relative;
-}
-
+.tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.search{flex:1;min-width:190px;position:relative}
 .search i{
- position:absolute;
- right:15px;
- top:50%;
- transform:translateY(-50%);
- color:#8ddcd4;
+ position:absolute;right:15px;top:50%;
+ transform:translateY(-50%);color:#8ddcd4;
 }
-
 .search input{
- width:100%;
- background:#ffffff0e;
- border:1px solid #ffffff25;
- border-radius:14px;
- color:white;
- padding:13px 43px 13px 12px;
+ width:100%;background:#ffffff0e;border:1px solid #ffffff25;
+ border-radius:14px;color:white;padding:13px 43px 13px 12px;
  outline:none;
 }
-
-.search input::placeholder{
- color:#a9becb;
-}
-
+.search input::placeholder{color:#a9becb}
 .filter{
- background:#ffffff0d;
- border:1px solid #ffffff24;
- color:#d5e6ed;
- padding:12px 15px;
- border-radius:13px;
+ background:#ffffff0d;border:1px solid #ffffff24;
+ color:#d5e6ed;padding:12px 15px;border-radius:13px;
 }
-
 .filter.active{
- background:#17645f;
- color:white;
- border-color:#62d9cc66;
+ background:#17645f;color:white;border-color:#62d9cc66;
 }
-
-/* بطاقات الخدمات */
-
 .grid{
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
  gap:13px;
 }
-
-.card-wrap{
- position:relative;
- width:100%;
-}
-
 .card{
- position:relative;
- display:block;
- width:100%;
- text-align:right;
- min-height:173px;
- padding:18px;
- border-radius:21px;
+ position:relative;display:block;width:100%;text-align:right;
+ min-height:173px;padding:18px;border-radius:21px;
  border:1px solid #ffffff20;
  background:linear-gradient(140deg,#ffffff14,#ffffff06);
- color:white;
- transition:transform .2s,border-color .2s;
- overflow:hidden;
+ color:white;transition:.2s;
 }
-
-.card:hover{
- transform:translateY(-4px);
- border-color:#69dace80;
-}
-
-.card.feature{
- background:linear-gradient(135deg,#13576a,#0b324c);
-}
-
-.card.parent{
- background:linear-gradient(135deg,#6d532a88,#182c3c);
-}
-
-.card.clock-card{
- background:linear-gradient(135deg,#126a71,#0b344f);
-}
-
-.card .ico{
- height:47px;
- width:47px;
- display:grid;
- place-items:center;
- border-radius:14px;
- background:#ffffff16;
+.card:hover{transform:translateY(-4px);border-color:#69dace80}
+.card.feature{background:linear-gradient(135deg,#13576a,#0b324c)}
+.card.parent{background:linear-gradient(135deg,#6d532a88,#182c3c)}
+.card.clock-card{background:linear-gradient(135deg,#126a71,#0b344f)}
+.ico{
+ height:47px;width:47px;display:grid;place-items:center;
+ border-radius:14px;background:#ffffff16;
  border:1px solid #ffffff20;
- color:var(--accent);
- font-size:21px;
+ color:var(--accent);font-size:21px;
 }
-
-.card h3{
- font-size:18px;
- margin:13px 0 5px;
+.card h3{font-size:18px;margin:13px 0 5px}
+.card p{color:#c3d4de;font-size:13px;margin:0;padding-left:28px}
+.arrow{
+ position:absolute;left:17px;bottom:18px;color:var(--accent);
 }
-
-.card p{
- color:#c3d4de;
- font-size:13px;
- margin:0;
- padding-left:28px;
- line-height:1.6;
-}
-
-.card .arrow{
- position:absolute;
- left:17px;
- bottom:18px;
- color:var(--accent);
-}
-
 .fav{
- position:absolute;
- left:13px;
- top:13px;
- border:0;
- background:#ffffff18;
- color:#a9bfca;
- border-radius:50%;
- height:35px;
- width:35px;
- z-index:2;
+ position:absolute;left:13px;top:13px;z-index:2;
+ border:0;background:#ffffff12;color:#a9bfca;
+ border-radius:50%;height:35px;width:35px;
 }
-
-.fav.selected{
- color:var(--gold);
-}
-
-.empty{
- text-align:center;
- color:#c2d5df;
- padding:30px;
-}
-
-.hidden{
- display:none!important;
-}
-
-/* التذييل */
-
+.fav.selected{color:var(--gold)}
+.empty{text-align:center;color:#c2d5df;padding:30px}
+.hidden{display:none!important}
 footer{
- display:flex;
- justify-content:space-between;
- gap:12px;
- color:#94adbc;
- font-size:12px;
- margin-top:20px;
- padding:0 5px;
+ display:flex;justify-content:space-between;gap:12px;
+ color:#94adbc;font-size:12px;margin-top:20px;
 }
-
-/* نافذة الخدمات */
-
 .overlay{
- position:fixed;
- inset:0;
- background:#061827;
- z-index:30;
- display:none;
- flex-direction:column;
+ position:fixed;inset:0;background:#061827;
+ z-index:30;display:none;flex-direction:column;
 }
-
-.overlay.on{
- display:flex;
-}
-
+.overlay.on{display:flex}
 .browser{
- min-height:65px;
- display:flex;
- align-items:center;
- gap:10px;
- background:#0b344c;
- padding:10px 14px;
+ min-height:65px;display:flex;align-items:center;gap:10px;
+ background:#0b344c;padding:10px 14px;
 }
-
-.browser .name{
- flex:1;
- font-weight:900;
-}
-
+.browser .name{flex:1;font-weight:900}
 .action{
- background:#ffffff16;
- color:white;
- border:1px solid #ffffff24;
- border-radius:11px;
- padding:10px 14px;
+ background:#ffffff16;color:white;border:1px solid #ffffff24;
+ border-radius:11px;padding:10px 14px;
 }
-
-.action.primary{
- background:white;
- color:#10364b;
-}
-
-iframe{
- border:0;
- background:white;
- flex:1;
- width:100%;
- min-height:0;
-}
-
-/* نافذة الإعدادات */
-
+.action.primary{background:white;color:#10364b}
+iframe{border:0;background:white;flex:1;width:100%;min-height:0}
 .modal{
- position:fixed;
- inset:0;
- background:#000b;
- z-index:50;
- display:none;
- align-items:center;
- justify-content:center;
- padding:15px;
+ position:fixed;inset:0;background:#000b;z-index:50;
+ display:none;align-items:center;justify-content:center;padding:15px;
 }
-
-.modal.on{
- display:flex;
-}
-
+.modal.on{display:flex}
 .dialog{
- width:min(600px,100%);
- max-height:90vh;
- overflow-y:auto;
- background:#0d3045;
- border:1px solid #ffffff29;
- border-radius:22px;
- padding:24px;
- box-shadow:0 20px 90px #0009;
+ width:min(600px,100%);background:#0d3045;
+ border:1px solid #ffffff29;border-radius:22px;padding:24px;
 }
-
-.dialog h2{
- margin:0 0 12px;
-}
-
-.dialog p{
- font-size:13px;
- color:#b9cdd8;
- line-height:1.7;
-}
-
+.dialog h2{margin:0 0 12px}
+.dialog p{font-size:13px;color:#b9cdd8}
 .settings-grid{
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:10px;
- margin:15px 0;
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:10px;margin:15px 0;
 }
-
 .settings-grid label{
- display:flex;
- flex-direction:column;
- gap:5px;
- color:#d8e8ef;
- font-size:13px;
+ display:flex;flex-direction:column;gap:5px;
+ font-size:13px;color:#d8e8ef;
 }
-
-.settings-grid input{
- width:100%;
- border:1px solid #ffffff3a;
- border-radius:10px;
- background:#051e2d;
- color:white;
- padding:11px;
- font-size:17px;
+.settings-grid input,.dialog textarea{
+ width:100%;border:1px solid #ffffff3a;
+ border-radius:10px;background:#051e2d;color:white;padding:11px;
 }
-
-.dialog textarea{
- width:100%;
- min-height:105px;
- border-radius:12px;
- border:1px solid #ffffff3a;
- background:#051e2d;
- color:white;
- padding:12px;
- resize:vertical;
- margin-top:8px;
-}
-
+.dialog textarea{min-height:100px;resize:vertical}
 .dialog-actions{
- display:flex;
- gap:8px;
- justify-content:flex-end;
- margin-top:14px;
- flex-wrap:wrap;
+ display:flex;gap:8px;justify-content:flex-end;margin-top:14px;
 }
-
-/* التجاوب */
-
 @media(max-width:950px){
- .hero{
-  grid-template-columns:1fr;
- }
- .grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
- }
- .metrics{
-  grid-template-columns:repeat(2,minmax(0,1fr));
- }
+ .hero{grid-template-columns:1fr}
+ .grid{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:650px){
- header{
-  flex-direction:column;
-  align-items:stretch;
- }
-
+ header{flex-direction:column;align-items:stretch}
  .school{font-size:17px}
-
- .identity img{
-  width:60px;
-  height:60px;
- }
-
- .header-right{
-  justify-content:space-between;
- }
-
+ .identity img{width:60px;height:60px}
+ .header-right{justify-content:space-between}
  .clock{flex:1}
-
- .hero-main,.vision{
-  padding:19px;
- }
-
- .vision strong{font-size:17px}
-
- .metrics{gap:8px}
-
- .metric{
-  padding:12px 9px;
-  display:block;
-  text-align:center;
- }
-
- .metric i{font-size:19px}
- .metric b{font-size:21px}
- .metric small{font-size:11px}
-
+ .hero-main,.vision{padding:19px}
+ .metrics{grid-template-columns:repeat(2,1fr)}
+ .metric{padding:10px;display:block;text-align:center}
+ .metric b{font-size:20px}
  .grid{grid-template-columns:1fr}
  .card{min-height:150px}
- .section-head h2{font-size:20px}
- .filter{padding:10px}
  .browser{flex-wrap:wrap}
- .browser .name{font-size:13px}
  footer{flex-direction:column}
-}
-
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  animation:none!important;
-  transition:none!important;
- }
 }
 </style>
 </head>
 
 <body>
-
-<main class="shell">
+<div class="shell">
 
 <header class="glass">
-
  <div class="identity">
-
-  <img
-   src="https://c.top4top.io/p_3906f6odb1.jpg"
-   alt="شعار مدرسة أبو الدرداء">
-
+  <img src="https://c.top4top.io/p_3906f6odb1.jpg" alt="شعار المدرسة">
   <div>
    <div class="ministry">
     سلطنة عُمان · وزارة التعليم<br>
     المديرية العامة للتعليم بمحافظة الظاهرة
    </div>
-
-   <div class="school">
-    مدرسة أبو الدرداء للبنين (5–12)
-   </div>
-
-   <div class="schoolCode">
-    الرمز المدرسي: 7237
-   </div>
+   <div class="school">مدرسة أبو الدرداء للبنين (5–12)</div>
+   <div class="code-tag">الرمز المدرسي: 7237</div>
   </div>
-
  </div>
-
  <div class="header-right">
-
   <div class="clock">
    <div id="time">--:--:--</div>
    <div id="date">التاريخ</div>
   </div>
-
-  <button class="icon-btn" id="fullBtn"
-   title="ملء الشاشة" aria-label="ملء الشاشة">
+  <button class="icon-btn" id="fullBtn" title="ملء الشاشة">
    <i class="fa-solid fa-expand"></i>
   </button>
-
-  <button class="icon-btn" id="settingsBtn"
-   title="إعدادات المركز" aria-label="إعدادات المركز">
+  <button class="icon-btn" id="settingsBtn" title="الإعدادات">
    <i class="fa-solid fa-gear"></i>
   </button>
-
  </div>
-
 </header>
 
 <section class="hero">
-
  <div class="hero-main glass">
-
-  <div class="eyebrow">
-   ABU DARDA DIGITAL HUB · بوابة الريادة
-  </div>
-
+  <div class="eyebrow">ABU DARDA DIGITAL HUB · بوابة الريادة</div>
   <h1>مركز أبو الدرداء الرقمي</h1>
-
   <p>
    خدمات تتكامل، ومعرفة تتجدد، وريادة تُصنع.
    منظومة رقمية موحدة تيسر الوصول إلى خدمات المدرسة
    وتدعم جودة العمل والتعلم.
   </p>
-
  </div>
-
  <div class="vision glass">
   <small>رؤيتنا</small>
   <strong>
@@ -744,454 +280,247 @@ iframe{
    مبتكرٌ ومنافسٌ للمستقبل
   </strong>
  </div>
-
 </section>
-
-<!-- المؤشرات المدرسية -->
 
 <section class="metrics">
-
  <div class="metric glass">
   <i class="fa-solid fa-user-graduate"></i>
-  <div>
-   <b id="studentsMetric">698</b>
-   <small>طالبًا</small>
-  </div>
+  <div><b id="studentsMetric">698</b><small>طالبًا</small></div>
  </div>
-
  <div class="metric glass">
   <i class="fa-solid fa-people-roof"></i>
-  <div>
-   <b id="parentsMetric">484</b>
-   <small>ولي أمر</small>
-  </div>
+  <div><b id="parentsMetric">484</b><small>ولي أمر</small></div>
  </div>
-
  <div class="metric glass">
   <i class="fa-solid fa-school"></i>
-  <div>
-   <b id="classesMetric">23</b>
-   <small>شعبة دراسية</small>
-  </div>
+  <div><b id="classesMetric">23</b><small>شعبة دراسية</small></div>
  </div>
-
  <div class="metric glass">
   <i class="fa-solid fa-layer-group"></i>
-  <div>
-   <b id="serviceMetric">9</b>
-   <small>خدمات رقمية</small>
-  </div>
+  <div><b id="serviceMetric">10</b><small>خدمات رقمية</small></div>
  </div>
-
 </section>
 
-<!-- المستجدات -->
-
-<section class="announcement">
-
- <i class="fa-solid fa-bullhorn"
-  style="color:var(--gold)"></i>
-
- <strong>المستجدات</strong>
-
- <div class="news">
-  <span id="newsText">
-   مرحبًا بكم في مركز أبو الدرداء الرقمي
-  </span>
- </div>
-
-</section>
-
-<!-- الخدمات -->
+<div class="announcement">
+ <strong><i class="fa-solid fa-bullhorn"></i> مستجداتنا</strong>
+ <div class="news"><span id="newsText"></span></div>
+</div>
 
 <div class="section-head">
  <h2>خدماتنا الرقمية</h2>
- <span class="count" id="servicesCount">
-  9 خدمات متاحة
- </span>
+ <span class="count" id="servicesCount">10 خدمات متاحة</span>
 </div>
 
 <div class="tools">
-
- <label class="search">
+ <div class="search">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input
-   id="search"
-   type="search"
-   placeholder="ابحث عن خدمة رقمية..."
-   aria-label="البحث في الخدمات">
- </label>
-
- <button class="filter active" data-filter="all">
-  جميع الخدمات
- </button>
-
- <button class="filter" data-filter="staff">
-  الهيئة التعليمية
- </button>
-
- <button class="filter" data-filter="admin">
-  الإدارة
- </button>
-
- <button class="filter" data-filter="parent">
-  أولياء الأمور
- </button>
-
+  <input id="search" type="search" placeholder="ابحث عن خدمة...">
+ </div>
+ <button class="filter active" data-filter="all">جميع الخدمات</button>
+ <button class="filter" data-filter="staff">الهيئة التعليمية</button>
+ <button class="filter" data-filter="admin">الإدارة</button>
+ <button class="filter" data-filter="parent">أولياء الأمور</button>
  <button class="filter" data-filter="favorites">
-  <i class="fa-solid fa-star"></i>
-  المفضلة
+  <i class="fa-solid fa-star"></i> المفضلة
  </button>
-
 </div>
 
 <section class="grid" id="grid"></section>
-
-<div class="empty hidden" id="empty">
- لم نعثر على خدمات مطابقة.
-</div>
+<div class="empty hidden" id="empty">لم نعثر على خدمات مطابقة.</div>
 
 <footer>
  <b>بوابة أبو الدرداء الرقمية · عملا – ولاية عبري</b>
  <span>التقنية في خدمة التعلّم وصناعة الأثر</span>
 </footer>
-
-</main>
-
-<!-- عرض الخدمات داخل الموقع -->
-
-<div class="overlay" id="overlay">
-
- <div class="browser">
-
-  <button class="action primary" id="closeBtn">
-   <i class="fa-solid fa-arrow-right"></i>
-   الرئيسية
-  </button>
-
-  <span class="name" id="serviceName"></span>
-
-  <button class="action" id="externalBtn">
-   <i class="fa-solid fa-up-right-from-square"></i>
-   فتح مستقل
-  </button>
-
- </div>
-
- <iframe
-  id="frame"
-  title="الخدمة الرقمية"
-  allow="clipboard-read; clipboard-write">
- </iframe>
-
 </div>
 
-<!-- لوحة الإعدادات -->
-
-<div class="modal" id="modal"
- role="dialog" aria-modal="true"
- aria-labelledby="dialogTitle">
-
- <div class="dialog">
-
-  <h2 id="dialogTitle">
-   <i class="fa-solid fa-gear"></i>
-   إعدادات بوابة الريادة
-  </h2>
-
-  <p>
-   يمكنك تعديل الإحصاءات والإعلانات من هنا.
-   تُحفظ التعديلات في هذا المتصفح فقط.
-   أما تحديث البيانات لجميع الزوار فيحتاج
-   إلى تعديل الملف المنشور أو ربطه بقاعدة بيانات مركزية.
-  </p>
-
-  <div class="settings-grid">
-
-   <label>
-    عدد الطلبة
-    <input id="studentsInput"
-     type="number" min="0" max="999999" step="1">
-   </label>
-
-   <label>
-    عدد أولياء الأمور
-    <input id="parentsInput"
-     type="number" min="0" max="999999" step="1">
-   </label>
-
-   <label>
-    عدد الشعب الدراسية
-    <input id="classesInput"
-     type="number" min="0" max="999999" step="1">
-   </label>
-
-   <label>
-    عدد الخدمات الرقمية
-    <input id="servicesInput"
-     type="number" readonly>
-   </label>
-
-  </div>
-
-  <label for="announcementInput">
-   نص المستجدات والإعلانات
-  </label>
-
-  <textarea id="announcementInput"></textarea>
-
-  <div class="dialog-actions">
-
-   <button class="action" id="resetNews">
-    استعادة الافتراضي
-   </button>
-
-   <button class="action" id="cancelNews">
-    إلغاء
-   </button>
-
-   <button class="action primary" id="saveNews">
-    <i class="fa-solid fa-floppy-disk"></i>
-    حفظ التغييرات
-   </button>
-
-  </div>
-
+<!-- عارض الخدمات داخل المركز -->
+<div class="overlay" id="overlay">
+ <div class="browser">
+  <button class="action primary" id="closeBtn">
+   <i class="fa-solid fa-arrow-right"></i> الرئيسية
+  </button>
+  <span class="name" id="serviceName"></span>
+  <button class="action" id="externalBtn">
+   <i class="fa-solid fa-up-right-from-square"></i> فتح مستقل
+  </button>
  </div>
+ <iframe id="frame" title="الخدمة الرقمية"></iframe>
+</div>
 
+<!-- إعدادات محلية -->
+<div class="modal" id="modal">
+ <div class="dialog">
+  <h2>إعدادات بوابة الريادة</h2>
+  <p>
+   تُحفظ هذه التعديلات على هذا الجهاز والمتصفح فقط،
+   ولا تتغير لدى بقية الزوار.
+  </p>
+  <div class="settings-grid">
+   <label>عدد الطلبة
+    <input id="studentsInput" type="number" min="0">
+   </label>
+   <label>عدد أولياء الأمور
+    <input id="parentsInput" type="number" min="0">
+   </label>
+   <label>عدد الشعب الدراسية
+    <input id="classesInput" type="number" min="0">
+   </label>
+   <label>عدد الخدمات
+    <input id="servicesInput" type="number" readonly>
+   </label>
+  </div>
+  <label for="announcementInput">نص المستجدات</label>
+  <textarea id="announcementInput"></textarea>
+  <div class="dialog-actions">
+   <button class="action" id="resetNews">استعادة الافتراضي</button>
+   <button class="action" id="cancelNews">إلغاء</button>
+   <button class="action primary" id="saveNews">حفظ</button>
+  </div>
+ </div>
 </div>
 
 <script>
 "use strict";
 
-/* =========================
-   قائمة الخدمات الرقمية
-========================= */
-
 const services=[
-
+ {
+  t:"بوصلة أبو الدرداء الاستراتيجية",
+  d:"الرؤية والرسالة والقيم والأهداف الاستراتيجية والسنوية ومصفوفة الترابط",
+  u:"https://sultanalwaeli.github.io/compass/",
+  i:"fa-compass",a:"#e1b96c",c:"feature",
+  roles:["admin","staff","parent"]
+ },
  {
   t:"منصة الرصد والتقويم",
   d:"رصد أدوات التقويم والدرجات وملاحظات الطلبة",
   u:"https://sultanalwaeli.github.io/Assessment/",
-  i:"fa-chart-column",
-  a:"#63ddd1",
-  c:"feature",
+  i:"fa-chart-column",a:"#63ddd1",c:"feature",
   roles:["admin","staff"]
  },
-
  {
   t:"بوابة ولي الأمر",
-  d:"رحلة ابنك التعليمية… بين يديك",
+  d:"رحلة ابنك التعليمية بين يديك",
   u:"https://sultanalwaeli.github.io/portal/",
-  i:"fa-people-roof",
-  a:"#efc46d",
-  c:"parent",
+  i:"fa-people-roof",a:"#efc46d",c:"parent",
   roles:["parent"]
  },
-
  {
   t:"الساعة المدرسية الذكية",
-  d:"إدارة اليوم الدراسي والأجراس وجداول الحصص والمعلمين",
+  d:"إدارة اليوم الدراسي والأجراس وجداول الحصص",
   u:"https://sultanalwaeli.github.io/SchoolClock/",
-  i:"fa-clock",
-  a:"#63ddd1",
-  c:"clock-card",
-  roles:["admin","staff"],
-  external:true
+  i:"fa-clock",a:"#63ddd1",c:"clock-card",
+  roles:["admin","staff"],external:true
  },
-
  {
   t:"سجل الاستئذان الرقمي",
   d:"تسجيل وإدارة طلبات استئذان الطلبة",
   u:"https://script.google.com/macros/s/AKfycbxrvMJE6Z517aK2wnwZJkz58j5UKeIcexguLMBD_s4OV71tUDbmGbEPcqpnsx-v6bi8/exec",
-  i:"fa-user-clock",
-  a:"#84b9e5",
+  i:"fa-user-clock",a:"#84b9e5",
   roles:["admin","staff"]
  },
-
  {
   t:"سجل السلوك الطلابي",
   d:"متابعة وتسجيل السلوك الطلابي والإجراءات",
   u:"https://script.google.com/macros/s/AKfycbyc0TUMTXzmu71R_3_WFyDN6t5Wn6YOqPqqfK-2ILiNfLqxtZSQOLzRamZi3KWx4Rz2pA/exec",
-  i:"fa-star",
-  a:"#e4bd84",
+  i:"fa-star",a:"#e4bd84",
   roles:["admin","staff"]
  },
-
  {
   t:"سجل التأخر الصباحي",
   d:"تسجيل حالات تأخر الطلبة الصباحية",
   u:"https://script.google.com/macros/s/AKfycbwQsRYxATGP5XEwrbPaKdl7mzI-p-bz_ZAI9Tw4CZKFrsshmsYoCl1neGFtrjuC7JpB/exec",
-  i:"fa-clock",
-  a:"#d7a9ce",
+  i:"fa-clock",a:"#d7a9ce",
   roles:["admin","staff"]
  },
-
  {
   t:"سجل رصد الغياب",
   d:"رصد غياب الطلبة في الحصة الأولى والحالات الطارئة",
   u:"https://sultanalwaeli.github.io/absence.d/",
-  i:"fa-user-minus",
-  a:"#9ad0a5",
+  i:"fa-user-minus",a:"#9ad0a5",
   roles:["admin","staff"]
  },
-
  {
   t:"تطبيق مقارنة الغياب",
   d:"مقارنة غياب الحصة الأولى بالحالات الطارئة",
   u:"https://script.google.com/macros/s/AKfycbyW6KkuzK9_h6NrjR8WPvr_Purs3GzxnbiP_U35H99MP62dY_PnNTYUjRESG5L5bEVtgw/exec",
-  i:"fa-code-compare",
-  a:"#a9bce9",
+  i:"fa-code-compare",a:"#a9bce9",
   roles:["admin"]
  },
-
  {
   t:"سجل زوار المدرسة",
   d:"تسجيل بيانات زوار مدرسة أبو الدرداء",
   u:"https://script.google.com/macros/s/AKfycbwYjcDj1a0Yguj0tDUg5VqBkAxL7hESWxllWHG7j0jgV8ugndoKr1_RGwJ23xkfu315bw/exec",
-  i:"fa-users",
-  a:"#e8c783",
+  i:"fa-users",a:"#e8c783",
   roles:["admin"]
  }
-
 ];
 
-/* =========================
-   الإعدادات والبيانات
-========================= */
-
 const $=id=>document.getElementById(id);
-
-const metricDefaults={
- students:698,
- parents:484,
- classes:23
-};
-
-const defaultNews=
- "مرحبًا بكم في مركز أبو الدرداء الرقمي — التقنية في خدمة التعلّم وصناعة الأثر";
+const defaultNews="مرحبًا بكم في مركز أبو الدرداء الرقمي — التقنية في خدمة التعلّم وصناعة الأثر";
 
 function readLocal(key,fallback){
- try{
-  return localStorage.getItem(key)??fallback;
- }catch{
-  return fallback;
- }
+ try{return localStorage.getItem(key)??fallback}
+ catch{return fallback}
 }
-
 function writeLocal(key,value){
- try{
-  localStorage.setItem(key,value);
- }catch{}
+ try{localStorage.setItem(key,value)}catch{}
 }
-
-function metricValue(key){
-
- const stored=readLocal(
-  "abd_metric_"+key,
-  String(metricDefaults[key])
- );
-
- const n=Number(stored);
-
- return Number.isSafeInteger(n)&&n>=0&&n<=999999
-  ?n
-  :metricDefaults[key];
-}
-
-function updateMetrics(){
-
- for(const key of Object.keys(metricDefaults)){
-  $(key+"Metric").textContent=
-   metricValue(key).toLocaleString("ar-OM");
- }
-
- $("serviceMetric").textContent=services.length;
-
- $("servicesCount").textContent=
-  services.length+" خدمات متاحة";
-}
-
-updateMetrics();
-
-$("newsText").textContent=
- readLocal("abd_announcement",defaultNews);
-
-/* =========================
-   المفضلة
-========================= */
 
 let favorites=[];
-
 try{
- const saved=JSON.parse(
-  readLocal("abd_favorites","[]")
- );
-
- if(Array.isArray(saved)){
-  favorites=saved.filter(x=>typeof x==="string");
- }
+ const saved=JSON.parse(readLocal("abd_favorites","[]"));
+ if(Array.isArray(saved))favorites=saved;
 }catch{}
 
 let filter="all";
 let current="";
 
-/* =========================
-   إنشاء بطاقات الخدمات
-========================= */
+$("servicesCount").textContent=services.length+" خدمات متاحة";
+$("serviceMetric").textContent=services.length;
+
+const defaults={students:698,parents:484,classes:23};
+
+function metricValue(key){
+ const n=Number(readLocal("abd_metric_"+key,String(defaults[key])));
+ return Number.isSafeInteger(n)&&n>=0&&n<=999999?n:defaults[key];
+}
+
+function updateMetrics(){
+ for(const key of Object.keys(defaults)){
+  $(key+"Metric").textContent=metricValue(key).toLocaleString("ar-OM");
+ }
+}
+updateMetrics();
+
+$("newsText").textContent=readLocal("abd_announcement",defaultNews);
 
 function render(){
-
  const grid=$("grid");
  grid.replaceChildren();
-
- const query=$("search").value
-  .trim()
-  .toLocaleLowerCase("ar");
-
+ const query=$("search").value.trim().toLowerCase();
  let shown=0;
 
  services.forEach(s=>{
-
-  if(filter==="favorites"&&!favorites.includes(s.u)){
-   return;
-  }
-
-  if(
-   filter!=="all"&&
-   filter!=="favorites"&&
-   !s.roles.includes(filter)
-  ){
-   return;
-  }
-
-  if(
-   query&&
-   !(s.t+" "+s.d)
-    .toLocaleLowerCase("ar")
-    .includes(query)
-  ){
-   return;
-  }
+  if(filter==="favorites"&&!favorites.includes(s.u))return;
+  if(filter!=="all"&&filter!=="favorites"&&!s.roles.includes(filter))return;
+  if(query&&!(s.t+" "+s.d).toLowerCase().includes(query))return;
 
   shown++;
 
   const wrap=document.createElement("div");
-  wrap.className="card-wrap";
+  wrap.style.position="relative";
 
-  const b=document.createElement("button");
-  b.type="button";
-  b.className="card "+(s.c||"");
-  b.style.setProperty("--accent",s.a);
-  b.setAttribute("aria-label","فتح "+s.t);
+  const card=document.createElement("button");
+  card.type="button";
+  card.className="card "+(s.c||"");
+  card.style.setProperty("--accent",s.a);
+  card.setAttribute("aria-label","فتح "+s.t);
 
   const ico=document.createElement("div");
   ico.className="ico";
-
   const icon=document.createElement("i");
   icon.className="fa-solid "+s.i;
-
   ico.append(icon);
 
   const title=document.createElement("h3");
@@ -1201,324 +530,151 @@ function render(){
   desc.textContent=s.d;
 
   const arrow=document.createElement("i");
+  arrow.className="arrow fa-solid "+
+   (s.external?"fa-up-right-from-square":"fa-arrow-left");
 
-  arrow.className=
-   "arrow fa-solid "+
-   (s.external
-    ?"fa-up-right-from-square"
-    :"fa-arrow-left");
-
-  b.append(ico,title,desc,arrow);
-
-  b.addEventListener("click",()=>{
-   openService(s);
-  });
+  card.append(ico,title,desc,arrow);
+  card.addEventListener("click",()=>openService(s));
 
   const star=document.createElement("button");
   star.type="button";
-
-  star.className=
-   "fav"+
-   (favorites.includes(s.u)?" selected":"");
-
-  star.title="إضافة أو إزالة من المفضلة";
-  star.setAttribute(
-   "aria-label",
-   "تبديل المفضلة: "+s.t
-  );
-
-  star.innerHTML=
-   '<i class="fa-solid fa-star"></i>';
+  star.className="fav"+(favorites.includes(s.u)?" selected":"");
+  star.title="المفضلة";
+  star.setAttribute("aria-label","تبديل المفضلة: "+s.t);
+  star.innerHTML='<i class="fa-solid fa-star"></i>';
 
   star.addEventListener("click",()=>{
-
-   if(favorites.includes(s.u)){
-    favorites=favorites.filter(x=>x!==s.u);
-   }else{
-    favorites.push(s.u);
-   }
-
-   writeLocal(
-    "abd_favorites",
-    JSON.stringify(favorites)
-   );
-
+   favorites=favorites.includes(s.u)
+    ?favorites.filter(x=>x!==s.u)
+    :[...favorites,s.u];
+   writeLocal("abd_favorites",JSON.stringify(favorites));
    render();
-
   });
 
-  wrap.append(b,star);
+  wrap.append(card,star);
   grid.append(wrap);
-
  });
 
- $("empty").classList.toggle(
-  "hidden",
-  shown!==0
- );
-
+ $("empty").classList.toggle("hidden",shown!==0);
 }
 
-/* =========================
-   فتح الخدمات
-========================= */
-
 function openService(s){
-
+ // الساعة المدرسية تحتفظ بسلوكها السابق
  if(s.external){
-
-  window.open(
-   s.u,
-   "_blank",
-   "noopener,noreferrer"
-  );
-
+  window.open(s.u,"_blank","noopener,noreferrer");
   return;
  }
 
+ // فتح البوصلة والخدمات الأخرى داخل المركز
  current=s.u;
-
  $("serviceName").textContent=s.t;
  $("frame").src=s.u;
-
  $("overlay").classList.add("on");
-
  document.body.style.overflow="hidden";
 }
 
 function closeService(){
-
  $("overlay").classList.remove("on");
-
  $("frame").src="about:blank";
-
  document.body.style.overflow="";
-
  current="";
 }
 
-$("closeBtn").addEventListener(
- "click",
- closeService
-);
+$("closeBtn").addEventListener("click",closeService);
 
 $("externalBtn").addEventListener("click",()=>{
-
- if(current){
-  window.open(
-   current,
-   "_blank",
-   "noopener,noreferrer"
-  );
- }
-
+ if(current)window.open(current,"_blank","noopener,noreferrer");
 });
 
-/* =========================
-   البحث والتصنيف
-========================= */
-
-$("search").addEventListener(
- "input",
- render
-);
+$("search").addEventListener("input",render);
 
 document.querySelectorAll(".filter").forEach(btn=>{
-
  btn.addEventListener("click",()=>{
-
   filter=btn.dataset.filter;
-
   document.querySelectorAll(".filter").forEach(x=>{
-   x.classList.toggle(
-    "active",
-    x===btn
-   );
+   x.classList.toggle("active",x===btn);
   });
-
   render();
-
  });
-
 });
 
-/* =========================
-   الساعة والتاريخ
-========================= */
-
 function updateClock(){
-
  const now=new Date();
-
- $("time").textContent=
-  now.toLocaleTimeString("ar-OM",{
-   hour:"2-digit",
-   minute:"2-digit",
-   second:"2-digit",
-   hour12:true
-  });
-
- $("date").textContent=
-  now.toLocaleDateString("ar-OM",{
-   weekday:"long",
-   day:"numeric",
-   month:"long",
-   year:"numeric"
-  });
-
+ $("time").textContent=now.toLocaleTimeString("ar-OM",{
+  hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true
+ });
+ $("date").textContent=now.toLocaleDateString("ar-OM",{
+  weekday:"long",day:"numeric",month:"long",year:"numeric"
+ });
 }
-
 updateClock();
-
 setInterval(updateClock,1000);
 
-/* =========================
-   وضع ملء الشاشة
-========================= */
-
 $("fullBtn").addEventListener("click",async()=>{
-
  try{
-
   if(document.fullscreenElement){
    await document.exitFullscreen();
   }else{
    await document.documentElement.requestFullscreen();
   }
-
  }catch{}
-
 });
 
-/* =========================
-   لوحة الإعدادات
-========================= */
-
 $("settingsBtn").addEventListener("click",()=>{
-
- for(const key of Object.keys(metricDefaults)){
-
+ for(const key of Object.keys(defaults)){
   $(key+"Input").value=metricValue(key);
-
  }
-
  $("servicesInput").value=services.length;
-
- $("announcementInput").value=
-  $("newsText").textContent;
-
+ $("announcementInput").value=$("newsText").textContent;
  $("modal").classList.add("on");
-
- $("studentsInput").focus();
-
 });
 
 function closeModal(){
  $("modal").classList.remove("on");
 }
 
-$("cancelNews").addEventListener(
- "click",
- closeModal
-);
-
-/* حفظ التغييرات */
+$("cancelNews").addEventListener("click",closeModal);
 
 $("saveNews").addEventListener("click",()=>{
-
- for(const key of Object.keys(metricDefaults)){
-
+ for(const key of Object.keys(defaults)){
   const input=$(key+"Input");
   const n=Number(input.value);
-
-  if(
-   input.value.trim()===""||
-   !Number.isSafeInteger(n)||
-   n<0||
-   n>999999
-  ){
-
-   alert(
-    "يرجى إدخال عدد صحيح من 0 إلى 999999"
-   );
-
+  if(input.value.trim()===""||!Number.isSafeInteger(n)||n<0||n>999999){
+   alert("يرجى إدخال عدد صحيح في حقل "+key);
    input.focus();
-
    return;
   }
-
  }
-
- for(const key of Object.keys(metricDefaults)){
-
-  writeLocal(
-   "abd_metric_"+key,
-   $(key+"Input").value
-  );
-
+ for(const key of Object.keys(defaults)){
+  writeLocal("abd_metric_"+key,$(key+"Input").value);
  }
-
  updateMetrics();
 
- const announcement=
-  $("announcementInput").value.trim()||
-  defaultNews;
-
- $("newsText").textContent=announcement;
-
- writeLocal(
-  "abd_announcement",
-  announcement
- );
-
+ const news=$("announcementInput").value.trim()||defaultNews;
+ $("newsText").textContent=news;
+ writeLocal("abd_announcement",news);
  closeModal();
-
 });
-
-/* استعادة القيم الافتراضية */
 
 $("resetNews").addEventListener("click",()=>{
-
- for(const key of Object.keys(metricDefaults)){
-
-  $(key+"Input").value=
-   metricDefaults[key];
-
+ for(const key of Object.keys(defaults)){
+  $(key+"Input").value=defaults[key];
  }
-
- $("announcementInput").value=
-  defaultNews;
-
+ $("announcementInput").value=defaultNews;
 });
-
-/* إغلاق نافذة الإعدادات */
 
 $("modal").addEventListener("click",e=>{
-
- if(e.target===$("modal")){
-  closeModal();
- }
-
+ if(e.target===$("modal"))closeModal();
 });
-
-/* زر ESC */
 
 window.addEventListener("keydown",e=>{
-
  if(e.key==="Escape"){
-
   closeModal();
   closeService();
-
  }
-
 });
 
-/* بدء عرض الخدمات */
-
 render();
-
 </script>
-
 </body>
 </html>
