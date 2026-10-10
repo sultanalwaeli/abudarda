@@ -96,7 +96,7 @@ h1{font-size:clamp(27px,3vw,42px);margin:10px 0}
 .news{overflow:hidden;flex:1;white-space:nowrap}
 .news span{
  display:inline-block;color:#d8e8ed;
- animation:marquee 24s linear infinite;
+ animation:marquee 30s linear infinite;
 }
 @keyframes marquee{
  from{transform:translateX(-110%)}
@@ -297,7 +297,7 @@ iframe{border:0;background:white;flex:1;width:100%;min-height:0}
  </div>
  <div class="metric glass">
   <i class="fa-solid fa-layer-group"></i>
-  <div><b id="serviceMetric">10</b><small>خدمات رقمية</small></div>
+  <div><b id="serviceMetric">11</b><small>خدمة رقمية</small></div>
  </div>
 </section>
 
@@ -308,7 +308,7 @@ iframe{border:0;background:white;flex:1;width:100%;min-height:0}
 
 <div class="section-head">
  <h2>خدماتنا الرقمية</h2>
- <span class="count" id="servicesCount">10 خدمات متاحة</span>
+ <span class="count" id="servicesCount">11 خدمة متاحة</span>
 </div>
 
 <div class="tools">
@@ -392,6 +392,14 @@ const services=[
   roles:["admin","staff","parent"]
  },
  {
+  t:"الجدول المدرسي الإلكتروني",
+  d:"الاطلاع على جدول الحصص المدرسية عبر EduPage",
+  u:"https://drda26.edupage.org/timetable/view.php",
+  i:"fa-calendar-days",a:"#63ddd1",c:"feature",
+  roles:["admin","staff","parent"],
+  external:true
+ },
+ {
   t:"منصة الرصد والتقويم",
   d:"رصد أدوات التقويم والدرجات وملاحظات الطلبة",
   u:"https://sultanalwaeli.github.io/Assessment/",
@@ -457,7 +465,9 @@ const services=[
 ];
 
 const $=id=>document.getElementById(id);
-const defaultNews="مرحبًا بكم في مركز أبو الدرداء الرقمي — التقنية في خدمة التعلّم وصناعة الأثر";
+
+const defaultNews=
+"✨ أبو الدرداء تمضي نحو الريادة الرقمية | ثلاث شاشات تفاعلية بحجم 75 بوصة تعزز التعلم، ومنظومة صوتية متكاملة ترتقي بفعاليات الطابور الصباحي، وشبكة إنترنت شاملة تمتد إلى جميع أرجاء المدرسة… نعتني بأدق التفاصيل لنكتمل بالصورة الكبرى؛ بيئة تعليمية محفزة تصنع جيلًا مجيدًا علميًا، متمكنًا رقميًا، مبتكرًا ومنافسًا للمستقبل. ✨";
 
 function readLocal(key,fallback){
  try{return localStorage.getItem(key)??fallback}
@@ -476,7 +486,7 @@ try{
 let filter="all";
 let current="";
 
-$("servicesCount").textContent=services.length+" خدمات متاحة";
+$("servicesCount").textContent=services.length+" خدمة متاحة";
 $("serviceMetric").textContent=services.length;
 
 const defaults={students:698,parents:484,classes:23};
@@ -559,13 +569,13 @@ function render(){
 }
 
 function openService(s){
- // الساعة المدرسية تحتفظ بسلوكها السابق
+ // الخدمات التي تمنع التضمين تفتح في تبويب مستقل
  if(s.external){
   window.open(s.u,"_blank","noopener,noreferrer");
   return;
  }
 
- // فتح البوصلة والخدمات الأخرى داخل المركز
+ // البوصلة والخدمات الأخرى تفتح داخل المركز
  current=s.u;
  $("serviceName").textContent=s.t;
  $("frame").src=s.u;
@@ -601,10 +611,12 @@ document.querySelectorAll(".filter").forEach(btn=>{
 function updateClock(){
  const now=new Date();
  $("time").textContent=now.toLocaleTimeString("ar-OM",{
-  hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true
+  hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true,
+  timeZone:"Asia/Muscat"
  });
  $("date").textContent=now.toLocaleDateString("ar-OM",{
-  weekday:"long",day:"numeric",month:"long",year:"numeric"
+  weekday:"long",day:"numeric",month:"long",year:"numeric",
+  timeZone:"Asia/Muscat"
  });
 }
 updateClock();
