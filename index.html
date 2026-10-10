@@ -1,18 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061d32">
+<meta name="description" content="مركز أبو الدرداء الرقمي - بوابة الخدمات الرقمية لمدرسة أبو الدرداء للبنين (5–12)">
 
 <title>مركز أبو الدرداء الرقمي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 :root{
@@ -44,6 +44,7 @@ body{
 }
 
 /* الخلفية */
+
 .bg{
  position:fixed;
  inset:0;
@@ -93,7 +94,8 @@ body{
  mask-image:linear-gradient(to bottom,black,transparent 80%);
 }
 
-/* الحاوية */
+/* الحاوية الرئيسية */
+
 .app{
  width:min(96vw,1850px);
  margin:auto;
@@ -103,16 +105,22 @@ body{
  flex-direction:column;
 }
 
-/* الرأس */
+/* رأس الموقع */
+
 .top{
- height:104px;
+ min-height:104px;
  display:flex;
  align-items:center;
+ justify-content:space-between;
+ gap:15px;
  padding:12px 18px;
  border:1px solid rgba(255,255,255,.10);
  border-radius:27px;
- background:
- linear-gradient(120deg,rgba(255,255,255,.105),rgba(255,255,255,.045));
+ background:linear-gradient(
+  120deg,
+  rgba(255,255,255,.105),
+  rgba(255,255,255,.045)
+ );
  backdrop-filter:blur(18px);
  box-shadow:0 18px 60px #0004;
  position:relative;
@@ -126,8 +134,12 @@ body{
  width:420px;
  height:420px;
  border-radius:50%;
- background:
- radial-gradient(circle,rgba(91,208,195,.15),transparent 65%);
+ background:radial-gradient(
+  circle,
+  rgba(91,208,195,.15),
+  transparent 65%
+ );
+ pointer-events:none;
 }
 
 .brand{
@@ -135,12 +147,14 @@ body{
  align-items:center;
  gap:14px;
  flex:1;
+ min-width:0;
  z-index:1;
 }
 
 .logoWrap{
  width:76px;
  height:76px;
+ flex-shrink:0;
  border-radius:50%;
  padding:3px;
  background:linear-gradient(145deg,#fff,var(--gold));
@@ -167,7 +181,8 @@ body{
  margin-top:3px;
 }
 
-/* الساعة */
+/* ساعة رأس الموقع */
+
 .live{
  display:flex;
  align-items:center;
@@ -181,6 +196,7 @@ body{
  gap:7px;
  color:#c4d4dd;
  font-size:12px;
+ white-space:nowrap;
 }
 
 .dot{
@@ -215,6 +231,7 @@ body{
  line-height:1;
  color:#fff;
  letter-spacing:1px;
+ white-space:nowrap;
 }
 
 .date{
@@ -225,7 +242,8 @@ body{
  white-space:nowrap;
 }
 
-/* منطقة العنوان */
+/* منطقة العنوان والرؤية */
+
 .hero{
  display:grid;
  grid-template-columns:1.25fr .75fr;
@@ -257,6 +275,7 @@ body{
  font-weight:900;
  color:rgba(255,255,255,.025);
  white-space:nowrap;
+ pointer-events:none;
 }
 
 .kicker{
@@ -270,12 +289,16 @@ body{
  font-size:32px;
  margin:5px 0 3px;
  font-weight:900;
+ position:relative;
+ z-index:1;
 }
 
 .hero p{
  margin:0;
  color:#b4c5ce;
  font-size:14px;
+ position:relative;
+ z-index:1;
 }
 
 .vision{
@@ -283,8 +306,11 @@ body{
  display:flex;
  flex-direction:column;
  justify-content:center;
- background:
- linear-gradient(130deg,rgba(215,173,91,.13),rgba(255,255,255,.045));
+ background:linear-gradient(
+  130deg,
+  rgba(215,173,91,.13),
+  rgba(255,255,255,.045)
+ );
 }
 
 .vision small{
@@ -299,10 +325,12 @@ body{
 }
 
 /* عنوان الخدمات */
+
 .servicesHead{
  display:flex;
  align-items:end;
  justify-content:space-between;
+ gap:12px;
  margin:2px 4px 9px;
 }
 
@@ -323,13 +351,26 @@ body{
  border-radius:999px;
  color:#8be0d6!important;
  font-weight:800;
+ white-space:nowrap;
+}
+
+.touchHint{
+ display:flex;
+ gap:7px;
+ align-items:center;
+ margin-top:4px;
+}
+
+.touchHint i{
+ color:var(--teal2);
 }
 
 /* شبكة الخدمات */
+
 .grid{
  display:grid;
- grid-template-columns:repeat(4,1fr);
- grid-template-rows:repeat(2,minmax(155px,1fr));
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ grid-template-rows:repeat(3,minmax(145px,1fr));
  gap:12px;
  flex:1;
 }
@@ -340,8 +381,11 @@ body{
  text-align:right;
  border:1px solid rgba(255,255,255,.09);
  border-radius:23px;
- background:
- linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+ background:linear-gradient(
+  145deg,
+  rgba(255,255,255,.09),
+  rgba(255,255,255,.035)
+ );
  backdrop-filter:blur(14px);
  padding:17px 18px;
  color:white;
@@ -349,6 +393,7 @@ body{
  font:inherit;
  transition:.22s cubic-bezier(.2,.8,.2,1);
  box-shadow:0 13px 30px rgba(0,0,0,.14);
+ min-width:0;
 }
 
 .card:before{
@@ -357,11 +402,16 @@ body{
  width:150px;
  height:150px;
  border-radius:50%;
- background:radial-gradient(circle,var(--glow),transparent 70%);
+ background:radial-gradient(
+  circle,
+  var(--glow),
+  transparent 70%
+ );
  left:-55px;
  bottom:-70px;
  opacity:.5;
  transition:.25s;
+ pointer-events:none;
 }
 
 .card:hover,
@@ -377,17 +427,45 @@ body{
  opacity:.8;
 }
 
-/* البطاقات الرئيسية */
+/* البطاقات المميزة */
+
 .card.feature{
- background:
- linear-gradient(145deg,rgba(17,84,109,.92),rgba(8,48,72,.92));
+ background:linear-gradient(
+  145deg,
+  rgba(17,84,109,.92),
+  rgba(8,48,72,.92)
+ );
  border-color:rgba(91,208,195,.22);
 }
 
 .card.parent{
- background:
- linear-gradient(145deg,rgba(94,69,29,.70),rgba(44,42,37,.72));
+ background:linear-gradient(
+  145deg,
+  rgba(94,69,29,.70),
+  rgba(44,42,37,.72)
+ );
  border-color:rgba(215,173,91,.23);
+}
+
+.card.schoolClock{
+ background:linear-gradient(
+  145deg,
+  rgba(13,98,110,.95),
+  rgba(6,43,71,.95)
+ );
+ border-color:rgba(91,208,195,.4);
+}
+
+.card.schoolClock:after{
+ content:"";
+ position:absolute;
+ top:-45px;
+ left:-45px;
+ width:135px;
+ height:135px;
+ border-radius:50%;
+ border:1px solid rgba(91,208,195,.18);
+ pointer-events:none;
 }
 
 .icon{
@@ -407,6 +485,8 @@ body{
  font-size:17px;
  margin:12px 0 5px;
  font-weight:800;
+ position:relative;
+ z-index:1;
 }
 
 .card p{
@@ -415,10 +495,13 @@ body{
  color:#aebfc9;
  margin:0;
  max-width:90%;
+ position:relative;
+ z-index:1;
 }
 
 .feature p,
-.parent p{
+.parent p,
+.schoolClock p{
  color:#d0dce1;
 }
 
@@ -441,12 +524,27 @@ body{
  color:#082238;
 }
 
+.cardBadge{
+ position:absolute;
+ left:16px;
+ top:17px;
+ border-radius:999px;
+ padding:5px 9px;
+ background:rgba(91,208,195,.13);
+ border:1px solid rgba(91,208,195,.25);
+ color:#a8f3e9;
+ font-size:10px;
+ font-weight:800;
+}
+
 /* التذييل */
+
 .footer{
- height:35px;
+ min-height:35px;
  display:flex;
  align-items:end;
  justify-content:space-between;
+ gap:12px;
  color:#758e9d;
  font-size:10.5px;
  padding:0 5px;
@@ -456,7 +554,8 @@ body{
  color:#9eb2bd;
 }
 
-/* نافذة الخدمة */
+/* نافذة عرض الخدمات */
+
 .overlay{
  position:fixed;
  inset:0;
@@ -471,7 +570,7 @@ body{
 }
 
 .browser{
- height:68px;
+ min-height:68px;
  background:linear-gradient(120deg,#08283e,#0b3653);
  display:flex;
  align-items:center;
@@ -485,7 +584,7 @@ body{
  border:1px solid #ffffff17;
  border-radius:13px;
  padding:10px 15px;
- font:700 13px "Tajawal";
+ font:700 13px "Tajawal",sans-serif;
  cursor:pointer;
 }
 
@@ -502,30 +601,29 @@ body{
 .serviceName{
  flex:1;
  font-weight:800;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
 }
 
 iframe{
  width:100%;
- height:calc(100vh - 68px);
+ flex:1;
+ min-height:0;
  border:0;
  background:white;
 }
 
-.touchHint{
- display:flex;
- gap:7px;
- align-items:center;
-}
+/* الأجهزة اللوحية */
 
-.touchHint i{
- color:var(--teal2);
-}
-
-/* استجابة للشاشات المختلفة */
 @media(max-width:1100px){
  .grid{
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2,minmax(0,1fr));
   grid-template-rows:auto;
+ }
+
+ .card{
+  min-height:155px;
  }
 
  .hero{
@@ -535,16 +633,28 @@ iframe{
  .app{
   min-height:auto;
  }
+
+ .liveDot{
+  display:none;
+ }
 }
 
-@media(max-width:620px){
+/* الهواتف */
 
+@media(max-width:620px){
  .app{
   width:94vw;
  }
 
  .top{
+  min-height:auto;
   height:auto;
+  flex-direction:column;
+  align-items:stretch;
+ }
+
+ .brand{
+  width:100%;
  }
 
  .logoWrap{
@@ -553,28 +663,29 @@ iframe{
  }
 
  .gov{
-  font-size:9px;
+  font-size:10px;
  }
 
  .school{
-  font-size:15px;
+  font-size:16px;
  }
 
- .liveDot{
-  display:none;
+ .live{
+  width:100%;
  }
 
  .clock{
-  min-width:160px;
-  padding:8px;
+  width:100%;
+  min-width:0;
+  padding:10px;
  }
 
  .time{
-  font-size:26px;
+  font-size:30px;
  }
 
  .date{
-  font-size:9px;
+  font-size:12px;
  }
 
  .heroMain,
@@ -594,8 +705,36 @@ iframe{
   min-height:145px;
  }
 
+ .servicesHead{
+  align-items:center;
+ }
+
  .footer{
   display:none;
+ }
+
+ .browser{
+  flex-wrap:wrap;
+  gap:8px;
+ }
+
+ .back,
+ .external{
+  padding:9px 10px;
+  font-size:11px;
+ }
+
+ .serviceName{
+  font-size:12px;
+ }
+}
+
+@media(prefers-reduced-motion:reduce){
+ *,
+ *:before,
+ *:after{
+  animation:none!important;
+  transition:none!important;
  }
 }
 </style>
@@ -614,9 +753,9 @@ iframe{
 
   <div class="logoWrap">
    <img
-   class="logo"
-   src="https://c.top4top.io/p_3906f6odb1.jpg"
-   alt="شعار مدرسة أبو الدرداء">
+    class="logo"
+    src="https://c.top4top.io/p_3906f6odb1.jpg"
+    alt="شعار مدرسة أبو الدرداء">
   </div>
 
   <div>
@@ -648,7 +787,6 @@ iframe{
 
 </header>
 
-
 <section class="hero">
 
  <div class="heroMain">
@@ -657,9 +795,7 @@ iframe{
    ABU DARDA DIGITAL HUB
   </div>
 
-  <h1>
-   مركز أبو الدرداء الرقمي
-  </h1>
+  <h1>مركز أبو الدرداء الرقمي</h1>
 
   <p>
    كل خدمات المدرسة الرقمية… في مساحة واحدة ذكية وسريعة.
@@ -667,12 +803,9 @@ iframe{
 
  </div>
 
-
  <div class="vision">
 
-  <small>
-   رؤيتنا
-  </small>
+  <small>رؤيتنا</small>
 
   <strong>
    جيلٌ مجيدٌ علميًا، متمكنٌ رقميًا، مبتكرٌ ومنافسٌ للمستقبل
@@ -682,31 +815,24 @@ iframe{
 
 </section>
 
-
 <div class="servicesHead">
 
  <div>
-
-  <h2>
-   خدماتنا الرقمية
-  </h2>
+  <h2>خدماتنا الرقمية</h2>
 
   <span class="touchHint">
    <i class="fa-solid fa-hand-pointer"></i>
    المس البطاقة للوصول إلى الخدمة
   </span>
-
  </div>
 
- <span class="count">
-  8 خدمات متاحة
+ <span class="count" id="servicesCount">
+  9 خدمات متاحة
  </span>
 
 </div>
 
-
 <section class="grid" id="grid"></section>
-
 
 <footer class="footer">
 
@@ -722,6 +848,7 @@ iframe{
 
 </main>
 
+<!-- نافذة عرض الخدمات -->
 
 <div class="overlay" id="overlay">
 
@@ -743,19 +870,18 @@ iframe{
  </div>
 
  <iframe
- id="frame"
- title="الخدمة الرقمية"
- allow="clipboard-read; clipboard-write">
+  id="frame"
+  title="الخدمة الرقمية"
+  allow="clipboard-read; clipboard-write">
  </iframe>
 
 </div>
 
-
 <script>
 
-/* ==============================
-   الخدمات الرقمية
-============================== */
+/* ==========================================
+   جميع خدمات مركز أبو الدرداء الرقمي
+========================================== */
 
 const services=[
 
@@ -778,16 +904,19 @@ const services=[
   g:"rgba(215,173,91,.55)",
   c:"parent"
  },
-  {
-  t:"الساعة المدرسية الذكية",
-  d:"منصة رقمية تفاعلية لتنظيم اليوم الدراسي",
-  u:"https://sultanalwaeli.github.io/SchoolClock/",
-  i:"fa-people-roof",
-  a:"#efc46d",
-  g:"rgba(215,173,91,.55)",
-  c:"parent"
- },
 
+ /* الساعة المدرسية الذكية - الرابط الصحيح */
+
+ {
+  t:"الساعة المدرسية الذكية",
+  d:"إدارة اليوم الدراسي والأجراس وجداول الحصص والمعلمين",
+  u:"https://sultanalwaeli.github.io/SchoolClock/",
+  i:"fa-clock",
+  a:"#63ddd1",
+  g:"rgba(28,163,154,.55)",
+  c:"schoolClock",
+  external:true
+ },
 
  {
   t:"سجل الاستئذان الرقمي",
@@ -845,12 +974,15 @@ const services=[
 
 ];
 
-
-/* ==============================
-   إنشاء البطاقات
-============================== */
+/* ==========================================
+   إنشاء بطاقات الخدمات تلقائيًا
+========================================== */
 
 const grid=document.getElementById("grid");
+const servicesCount=document.getElementById("servicesCount");
+
+servicesCount.textContent=
+ `${services.length} خدمات متاحة`;
 
 let current="";
 
@@ -858,22 +990,37 @@ services.forEach(s=>{
 
  const b=document.createElement("button");
 
+ b.type="button";
+
  b.className="card "+(s.c||"");
 
  b.style.setProperty("--accent",s.a);
  b.style.setProperty("--glow",s.g);
+
+ b.setAttribute("aria-label","فتح "+s.t);
 
  b.innerHTML=`
   <div class="icon">
    <i class="fa-solid ${s.i}"></i>
   </div>
 
+  ${s.external ? `
+   <span class="cardBadge">
+    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    نافذة مستقلة
+   </span>
+  ` : ""}
+
   <h3>${s.t}</h3>
 
   <p>${s.d}</p>
 
   <span class="go">
-   <i class="fa-solid fa-arrow-left"></i>
+   <i class="fa-solid ${
+    s.external
+    ? "fa-up-right-from-square"
+    : "fa-arrow-left"
+   }"></i>
   </span>
  `;
 
@@ -883,12 +1030,35 @@ services.forEach(s=>{
 
 });
 
-
-/* ==============================
-   فتح الخدمات
-============================== */
+/* ==========================================
+   فتح الخدمة المطلوبة
+========================================== */
 
 function openService(s){
+
+ /*
+  الساعة المدرسية تفتح مباشرة في نافذة مستقلة
+  حتى تكون مناسبة لعرض الساعة وتشغيل الأجراس.
+ */
+
+ if(s.external){
+  const newWindow=window.open(
+   s.u,
+   "_blank",
+   "noopener,noreferrer"
+  );
+
+  /*
+   إذا منع المتصفح فتح النافذة الجديدة،
+   ينتقل إلى رابط الساعة في نفس الصفحة.
+  */
+
+  if(!newWindow){
+   window.location.href=s.u;
+  }
+
+  return;
+ }
 
  current=s.u;
 
@@ -898,12 +1068,13 @@ function openService(s){
 
  document.getElementById("overlay").classList.add("on");
 
+ document.body.style.overflow="hidden";
+
 }
 
-
-/* ==============================
-   العودة للرئيسية
-============================== */
+/* ==========================================
+   إغلاق نافذة الخدمة والعودة للرئيسية
+========================================== */
 
 function closeService(){
 
@@ -911,27 +1082,31 @@ function closeService(){
 
  document.getElementById("frame").src="about:blank";
 
+ document.body.style.overflow="";
+
  current="";
 
 }
 
-
-/* ==============================
-   فتح في نافذة مستقلة
-============================== */
+/* ==========================================
+   فتح الخدمة في نافذة مستقلة
+========================================== */
 
 function openExternal(){
 
  if(current){
-  window.open(current,"_blank","noopener");
+  window.open(
+   current,
+   "_blank",
+   "noopener,noreferrer"
+  );
  }
 
 }
 
-
-/* ==============================
-   الساعة والتاريخ
-============================== */
+/* ==========================================
+   ساعة وتاريخ المركز الرقمي
+========================================== */
 
 function updateClock(){
 
@@ -963,9 +1138,11 @@ updateClock();
 
 setInterval(updateClock,1000);
 
+/* ==========================================
+   زر ESC للعودة إلى المركز
+========================================== */
 
-/* زر ESC للعودة */
-addEventListener("keydown",e=>{
+window.addEventListener("keydown",e=>{
 
  if(e.key==="Escape"){
   closeService();
